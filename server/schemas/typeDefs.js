@@ -12,7 +12,14 @@ type User {
   donationCount: Int
 }
 
-
+type Pet {
+  _id: ID!
+  name: String!
+  image: String
+  summary: String!
+  supplies: [Supply]
+  supCount: Int
+}
 
 type Auth {
   token: ID!

@@ -57,6 +57,7 @@
         - Homepage
           - About the organization
           - Search
+        - User profile
         - See all pets
         - See this pet page
         - Donations

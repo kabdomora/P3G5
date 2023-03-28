@@ -21,7 +21,6 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    contPets: [petSchema],
     donations: [donationSchema],
   },
   {

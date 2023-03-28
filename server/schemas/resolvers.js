@@ -27,6 +27,12 @@ const resolvers = {
 
             return ({ token, user });
         },
+        // add one pet at a time
+        addPet: async (parent, args) => {
+          const pet = await Pet.create(args);
+
+          return (pet);
+        },
         login: async (parent, args) => {
             const user = await User.findOne({ $or: [{ username: args.username }, { email: args.email }] });
             if (!user) {

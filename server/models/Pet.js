@@ -32,4 +32,4 @@ petSchema.virtual('supCount').get(function () {
 
 const Pet = model('Pet', petSchema);
 
-module.exports - Pet;
+module.exports = Pet;

@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Pet, Donation, Supply } = require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 
@@ -15,6 +15,9 @@ const resolvers = {
               throw new AuthenticationError('Cannot find a user with this id!');
             }
             return foundUser;
+        },
+        pets: async () => {
+          return Pet.find({}).populate('supplies');
         },
     },
     Mutation: {

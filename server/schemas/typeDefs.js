@@ -6,7 +6,13 @@ type User {
   username: String!
   email: String!
   password: String!
+  contPets: [Pet]
+  donations: [Donation]
+  petCount: Int
+  donationCount: Int
 }
+
+
 
 type Auth {
   token: ID!
@@ -20,7 +26,7 @@ type Query {
 
 type Mutation {
   addUser(username: String!, email: String!, password: String!): Auth
-  login(username: String!, email: String!, password: String!): Auth
+  login(username: String, email: String, password: String!): Auth
 }
 `;
 

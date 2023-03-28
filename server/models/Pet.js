@@ -16,7 +16,7 @@ const petSchema = new Schema(
             type: String,
             required: true,
         },
-        supNeeded: [suppliesSchema],
+        supplies: [suppliesSchema],
     },
     {
         toJSON: {

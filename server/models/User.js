@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 // import schema from Book.js
-const bookSchema = require('./Book');
+const petSchema = require('./Pet');
 
 const userSchema = new Schema(
   {
@@ -21,7 +21,14 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    contPets: [petSchema],
+    donations: [donationSchema],
   },
+  {
+    toJSON: {
+      virtuals: true,
+    },
+  }
 );
 
 // hash user password
@@ -38,6 +45,14 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
+
+userSchema.virtual('petCount').get(function () {
+  return this.contPets.length;
+});
+// might need to combine these... 
+userSchema.virtual('donationCount').get(function () {
+  return this.donations.length;
+});
 
 
 const User = model('User', userSchema);

@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Pet, Donation, Supply } = require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 
@@ -16,6 +16,9 @@ const resolvers = {
             }
             return foundUser;
         },
+        pets: async () => {
+          return Pet.find({}).populate('supplies');
+        },
     },
     Mutation: {
         addUser: async (parent, args) => {
@@ -23,6 +26,12 @@ const resolvers = {
             const token = signToken(user);
 
             return ({ token, user });
+        },
+        // add one pet at a time
+        addPet: async (parent, args) => {
+          const pet = await Pet.create(args);
+
+          return (pet);
         },
         login: async (parent, args) => {
             const user = await User.findOne({ $or: [{ username: args.username }, { email: args.email }] });

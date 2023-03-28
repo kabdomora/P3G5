@@ -1,8 +1,5 @@
 const { Schema, model } = require('mongoose');
 
-const userSchema = require('./User');
-const petSchema = require('./Pet')
-
 const donationSchema = new Schema(
     {
         amount: {
@@ -14,7 +11,6 @@ const donationSchema = new Schema(
             type: String,
             required: false,
         },
-        donor: [userSchema],
     }
 );
 

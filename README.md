@@ -34,20 +34,21 @@
           - email
           - password
           <!-- - potentially add fields where users can apply to take home an animal -->
-        - Pets
+          - [pets]
+          - [donations]
+        - Pet
           - name
           - image
           - summary/about me
           - [supplies]
-        - Supplies
+        - Supply
           - type
             - bedding
             - food
             - toys
             - vitamins/medication
           - price
-        - Donations
-          - the user
+        - Donation
           - amount
           - message
 

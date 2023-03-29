@@ -26,7 +26,7 @@ function Header() {
             </div>
             <div className='lower-header'>
                 <button className='header-btn'><Link to="/Pets" className='link-remove'>Pets</Link></button>
-                <button className='header-btn'>About</button>
+                <button className='header-btn'><Link to="/" className='link-remove'>About</Link></button>
                 <button className='header-btn'>Donate</button>
             </div>
         </div>

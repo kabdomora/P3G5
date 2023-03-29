@@ -31,21 +31,19 @@ function App() {
       <Router>
         <>
           <Header />
-          <Switch>
-            <Route exact path='/'> 
-              <Main />
-            </Route> 
-            <Route path='/saved'> 
-            {/* page here */}
-          </Route>
-            <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
-          </Switch>
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/saved" element={<SavedPage />} />
+            <Route path="*" element={<h1 className='display-2'>Wrong page!</h1>} />
+          </Routes>
           <Footer/>
         </>
       </Router>
-    </ApolloProvider>
-    
+    </ApolloProvider> 
   );
 }
 
 export default App;
+
+
+

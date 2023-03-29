@@ -33,8 +33,8 @@ function App() {
           <Header />
           <Switch>
             <Route exact path='/'> 
-            {Main}
-          </Route> 
+              <Main />
+            </Route> 
             <Route path='/saved'> 
             {/* page here */}
           </Route>

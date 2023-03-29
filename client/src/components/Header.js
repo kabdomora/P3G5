@@ -15,7 +15,7 @@ function Header() {
                 {Auth.loggedIn() ? (
                     <button className='login-btn' onClick={Auth.logout}>Logout</button>
                 ) : (
-                    <button className='login-btn' onClick={handleModalOpen}>Login</button>
+                    <button className='login-btn' onClick={handleModalOpen}>Login/Sign Up</button>
                 )}
 
                 <LoginModal showModal={showModal} setShowModal={setShowModal} />

@@ -9,6 +9,8 @@ type User {
   donations: [Donation]
   donationCount: Int
   pets: [Pet]
+  firstName: String!
+  lastName: String!
 }
 
 type Pet {
@@ -52,7 +54,7 @@ type Query {
 }
 
 type Mutation {
-  addUser(username: String!, email: String!, password: String!): Auth
+  addUser(username: String!, email: String!, password: String!, firstName: String!, lastName: String!): Auth
   addPet(name: String!, image: String, summary: String!): Pet
   login(username: String, email: String, password: String!): Auth
   donate(amount: Int!, message: String, pets: [ID]): Donation

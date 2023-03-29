@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const suppliesSchema = require('./Supplies');
+const suppliesSchema = require('./Supply');
 
 const petSchema = new Schema(
     {
@@ -16,7 +16,7 @@ const petSchema = new Schema(
             type: String,
             required: true,
         },
-        supNeeded: [suppliesSchema],
+        supplies: [suppliesSchema],
     },
     {
         toJSON: {
@@ -32,4 +32,4 @@ petSchema.virtual('supCount').get(function () {
 
 const Pet = model('Pet', petSchema);
 
-module.exports - Pet;
+module.exports = Pet;

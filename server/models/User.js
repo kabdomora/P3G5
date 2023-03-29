@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const petSchema = require('./Pet');
-const donationSchema = require('./Donations')
+const donationSchema = require('./Donation')
 
 const userSchema = new Schema(
   {
@@ -21,7 +21,6 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    contPets: [petSchema],
     donations: [donationSchema],
   },
   {

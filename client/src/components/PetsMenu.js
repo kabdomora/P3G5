@@ -1,8 +1,6 @@
 import React from 'react';
 import MenuProp from './PetsProps';
-
-/* Pictures Imported as Var here */
-import pet1 from "../assets/Loretta.png"
+import {PetsData, leftPets, rightPets}from './PetsData';
 
 function PetsMain() {
     return (
@@ -11,45 +9,32 @@ function PetsMain() {
                 <h2 className='article-title'>Pets</h2>
                 <div className='pets-menu-parent'>
                     <div className='pets-menu-col'>
-
-                        <MenuProp
-                            petName = "Loretta"
-                            picture = {pet1}
-                            alt="A pictue of Loretta the cat looking unhappy, Kayla claims that Loretta has 'Resting Bitch Face'"
-                            pMenuDescription = "This is the test description"
-                            pMenuSubHeader = "Test sub header"
-                            pMenuSubTxt = "Test sub txt"
-                        />
-
-                        <MenuProp
-                            petName = "Loretta"
-                            picture = {pet1}
-                            alt="A pictue of Loretta the cat looking unhappy, Kayla claims that Loretta has 'Resting Bitch Face'"
-                            pMenuDescription = "This is the test description"
-                            pMenuSubHeader = "Test sub header"
-                            pMenuSubTxt = "Test sub txt"
-                        />
-
+                    {leftPets.map((pet, index) => (
+                            <MenuProp
+                                key={index}
+                                petName={pet.petName}
+                                picture={pet.picture}
+                                alt={pet.alt}
+                                pMenuDescription={pet.pMenuDescription}
+                                pMenuSubHeader={pet.pMenuSubHeader}
+                                pMenuSubTxt={pet.pMenuSubTxt}
+                            />
+                        ))}
+                    
                     </div>
                     <div className='pets-menu-col'>
+                    {rightPets.map((pet, index) => (
+                            <MenuProp
+                                key={index}
+                                petName={pet.petName}
+                                picture={pet.picture}
+                                alt={pet.alt}
+                                pMenuDescription={pet.pMenuDescription}
+                                pMenuSubHeader={pet.pMenuSubHeader}
+                                pMenuSubTxt={pet.pMenuSubTxt}
+                            />
+                        ))}
                         
-                        <MenuProp
-                            petName = "Loretta"
-                            picture = {pet1}
-                            alt="A pictue of Loretta the cat looking unhappy, Kayla claims that Loretta has 'Resting Bitch Face'"
-                            pMenuDescription = "This is the test description"
-                            pMenuSubHeader = "Test sub header"
-                            pMenuSubTxt = "Test sub txt"
-                        />
-
-                        <MenuProp
-                            petName = "Loretta"
-                            picture = {pet1}
-                            alt="A pictue of Loretta the cat looking unhappy, Kayla claims that Loretta has 'Resting Bitch Face'"
-                            pMenuDescription = "This is the test description"
-                            pMenuSubHeader = "Test sub header"
-                            pMenuSubTxt = "Test sub txt"
-                        />
                     </div>
                 </div>
             </div>
@@ -57,11 +42,4 @@ function PetsMain() {
     );
 }
 
-
-
-
-
-
-
-
-export default  PetsMain;
+export default PetsMain;

@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 function MenuProp(props) {
     return (
         <div className= "Pets-Menu-Componet-Parent">
@@ -20,5 +21,5 @@ function MenuProp(props) {
         </div>
     );
 }
-  
-export default MenuProp;
+
+export default MenuProp

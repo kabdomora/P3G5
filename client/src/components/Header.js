@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import LoginModal from './LoginModal';
 import Auth from '../utils/auth';
+import { Link } from 'react-router-dom';
 
 function Header() {
     const [showModal, setShowModal] = useState(false);
@@ -24,7 +25,7 @@ function Header() {
                 <h1 className='site-title'><span className='title-span'>Anim</span>-Aid</h1>
             </div>
             <div className='lower-header'>
-                <button className='header-btn'>Pets</button>
+                <button className='header-btn'><Link to="/Pets" className='link-remove'>Pets</Link></button>
                 <button className='header-btn'>About</button>
                 <button className='header-btn'>Donate</button>
             </div>

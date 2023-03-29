@@ -103,6 +103,16 @@ h6 {
   
 }
 
+.link-remove {
+  text-decoration: none;
+  color: black;
+}
+
+.link-remove:hover {
+  text-decoration: none;
+  color: black;
+}
+
 /* Main */
 .main-parent {
   height: 100%;

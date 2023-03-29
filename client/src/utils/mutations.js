@@ -26,3 +26,23 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+export const ADD_DONATION = gql`
+  mutation Donate($amount: Int!, $message: String, $pets: [ID]!) {
+    donate(amount: $amount, message: $message, pets: $pets) {
+      _id
+      amount
+      message
+      donationDate
+      pets {
+        _id
+        name
+        summary
+        supplies {
+          type
+          cost
+        }
+      }
+    }
+  }
+`;

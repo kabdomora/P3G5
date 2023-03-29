@@ -1,8 +1,7 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const petSchema = require('./Pet');
-const donationSchema = require('./Donation')
+const Donation = require('./Donation');
 
 const userSchema = new Schema(
   {
@@ -10,6 +9,16 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
+    },
+    firstName: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    lastName: {
+      type: String,
+      required: true,
+      trim: true
     },
     email: {
       type: String,
@@ -21,8 +30,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    contPets: [petSchema],
-    donations: [donationSchema],
+    donations: [Donation.schema],
   },
   {
     toJSON: {
@@ -46,10 +54,6 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-userSchema.virtual('petCount').get(function () {
-  return this.contPets.length;
-});
-// might need to combine these... 
 userSchema.virtual('donationCount').get(function () {
   return this.donations.length;
 });

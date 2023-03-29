@@ -16,4 +16,4 @@ const supplySchema = new Schema(
 
 const Supply = model('Supply', supplySchema);
 
-module.exports - Supply;
+module.exports = Supply;

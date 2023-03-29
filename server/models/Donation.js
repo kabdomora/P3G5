@@ -11,9 +11,19 @@ const donationSchema = new Schema(
             type: String,
             required: false,
         },
+        donationDate: {
+            type: Date,
+            default: Date.now
+        },
+        pets: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Pet'
+            }
+        ],
     }
 );
 
 const Donation = model('Donation', donationSchema);
 
-module.exports - Donation;
+module.exports = Donation;

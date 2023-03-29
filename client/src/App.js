@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
@@ -7,6 +8,7 @@ import { setContext } from '@apollo/client/link/context';
 import Footer from './components/Footer';
 import Main from './components/Main';
 import Header from './components/Header'
+import PetsMenu from './components/PetsMenu'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -33,7 +35,7 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="/saved" element={<SavedPage />} />
+            <Route path="/Pets" element={<PetsMenu />} />
             <Route path="*" element={<h1 className='display-2'>Wrong page!</h1>} />
           </Routes>
           <Footer/>

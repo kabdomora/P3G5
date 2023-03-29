@@ -138,8 +138,125 @@ h6 {
   box-shadow: 0px 0px 20px 5px rgb(32, 32, 32);
   padding: 3%;
   text-indent: 2%;
+}
+
+/* Pets Menu */
+
+.pets-menu-parent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.pets-menu-col {
+  width: 45%;
+  height: 25%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 3%;
+}
+
+.Pets-Menu-Componet-Parent {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.Pets-Menu-Componet-Upper {
+  max-height: 50%;
+  width: 100%;
+
+  
+  justify-content: space-around;
+  
 
 }
+
+
+.pets-name {
+  height: 20%;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-align: center;
+
+}
+
+.menu-img-container {
+  height: 20vh;
+  width: 100%;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+  padding-bottom: 3%;
+
+  
+
+  
+}
+
+.pets-img {
+  height: 100%;
+  width: 60%;
+  
+  object-fit: cover;
+
+  border: 2px;
+  border-color: black;
+  border-style: solid;
+
+  box-shadow: 5px 2px 15px 3px rgb(81, 81, 81);
+}
+
+.Pets-Menu-Lower-Parent {
+  width: 100%;
+  min-height: 50%;
+  height: fit-content;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-content: center;
+
+  
+
+}
+
+.Pets-Description-Menu {
+  width: 75%;
+  padding-top: 1%;
+  text-align: left;
+  text-indent: 1.5%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.Pets-Menu-Sub-Parent {
+  padding-top: 2%;
+  width:100%;
+  display: flex;
+  flex-direction: row;
+
+}
+
+.Pets-Menu-Sub-Parent-Header {
+  font-size: medium;
+  margin-right: 5%;
+
+}
+
+.Pets-Menu-Sub-Parent-Txt {
+  margin-top: 10% ;
+
+}
+
+
 
 /* Footer */
 

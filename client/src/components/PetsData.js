@@ -21,6 +21,25 @@ const PetsData = [
         pMenuSubTxt: "Test sub txt",
         id: 1
 
+    },
+    {
+        petName: "Loretta",
+        picture: pet1,
+        alt: "A pictue of Loretta the cat looking unhappy, Kayla claims that Loretta has 'Resting Bitch Face'",
+        pMenuDescription: "This is the test description",
+        pMenuSubHeader: "Test sub header",
+        pMenuSubTxt: "Test sub txt",
+        id: 3
+    },
+    {
+        petName: "Jonny",
+        picture: pet1,
+        alt: "A pictue of Jonnhy the test cat",
+        pMenuDescription: "This is the test description",
+        pMenuSubHeader: "Test sub header",
+        pMenuSubTxt: "Test sub txt",
+        id: 4
+
     }
 ]
 

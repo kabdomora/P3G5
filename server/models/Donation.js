@@ -1,4 +1,4 @@
-const { Schema } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 const donationSchema = new Schema(
     {
@@ -11,7 +11,19 @@ const donationSchema = new Schema(
             type: String,
             required: false,
         },
+        donationDate: {
+            type: Date,
+            default: Date.now
+        },
+        pets: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Pet'
+            }
+        ],
     }
 );
 
-module.exports = donationSchema;
+const Donation = model('Donation', donationSchema);
+
+module.exports = Donation;

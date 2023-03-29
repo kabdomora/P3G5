@@ -14,15 +14,12 @@ function MenuProp(props) {
           <div className='project-description'>
             <div className='project-links-parent'>
               {props.icon && (
-                <a className="icon" href="./animals/Loretta">
+                <a className="icon" href={props.link}>
                   <FontAwesomeIcon icon={props.icon} className='iconcolor' beatFade />
                 </a>
               )}
 
-              {props.link && (
-                <a className='project-link' href={props.link}>View project</a>
-              )}
-            </div>
+             
 
             <div className='description-format'>
               <p>{props.pMenuDescription}</p>
@@ -34,97 +31,13 @@ function MenuProp(props) {
         </div>
       </div>
     </div>
+    
+    </div>
   );
 }
 
 export default MenuProp;
-/*
-<p className = 'Pets-Description-Menu'></p>
 
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            /*
-            <div className='menu-img-container'>
-                <div className='menu-img-overlay'>
-                <img src={props.picture} alt={props.alt} className='pets-img' /> 
-                    <div className='Pets-Menu-Componet-Upper'>
-                         
-
-
-                       
-                        
-                
-    
-                    </div>  
-
-                    <div className='Pets-Menu-Lower-Parent'>
-
-                         {/* 
-                        <div className='project-links-parent'>
-                            {props.repo && (
-                                <a className="icon" href={props.repo}>
-                                     <FaGithub className='iconcolor' />
-                                </a>
-                            )}
-
-                            {props.link && (
-                                 <a className='project-link' href={props.link}>View project</a>
-                            )}
-                        </div>
-                        
-                        }
-                    
-
-                    </div>
-
-                    <div className='Pets-Menu-Sub-Parent'>
-                    <h4 className='Pets-Menu-Sub-Parent-Header'>{props.pMenuSubHeader}</h4>
-                    <p className='Pets-Menu-Sub-Parent-Txt'>{props.pMenuSubTxt}</p>
-
-                    </div>
-
-
-
-                </div>
-           
-            </div>
-        
-    );
-}
-
-*/
 
 
 

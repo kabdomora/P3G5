@@ -20,6 +20,7 @@ function PetsMain() {
                 pMenuSubHeader={pet.pMenuSubHeader}
                 pMenuSubTxt={pet.pMenuSubTxt}
                 icon={faPaw}
+                link={pet.link}
               />
             ))}
           </div>
@@ -33,11 +34,15 @@ function PetsMain() {
                 pMenuDescription={pet.pMenuDescription}
                 pMenuSubHeader={pet.pMenuSubHeader}
                 pMenuSubTxt={pet.pMenuSubTxt}
+                icon={faPaw}
+                link={pet.link}
               />
             ))}
           </div>
         </div>
+        <div className='invisa-footer'></div>
       </div>
+      
     </div>
   );
 }

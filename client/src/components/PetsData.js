@@ -9,7 +9,8 @@ const PetsData = [
         alt: "A pictue of Loretta the cat looking unhappy, Kayla claims that Loretta has 'Resting Bitch Face'",
         pMenuDescription: "This is the test description",
         pMenuSubHeader: "Test sub header",
-        pMenuSubTxt: "Test sub txt"
+        pMenuSubTxt: "Test sub txt",
+        id: 0
     },
     {
         petName: "Jonny",
@@ -17,9 +18,20 @@ const PetsData = [
         alt: "A pictue of Jonnhy the test cat",
         pMenuDescription: "This is the test description",
         pMenuSubHeader: "Test sub header",
-        pMenuSubTxt: "Test sub txt" 
+        pMenuSubTxt: "Test sub txt",
+        id: 1
+
     }
 ]
+
+function modalPetsData() {
+    return PetsData.map((pet) => (
+        <option key={pet.id} value={pet.petName}>
+          {pet.petName}
+        </option>
+      ));
+}
+  
 
 const midIndex = Math.ceil(PetsData.length / 2);
 const leftPets = PetsData.slice(0, midIndex);
@@ -27,5 +39,5 @@ const rightPets = PetsData.slice(midIndex);
 
 
 
-export {PetsData, leftPets, rightPets}
+export  {leftPets, rightPets, modalPetsData}
 

@@ -25,9 +25,9 @@ function Header() {
                 <h1 className='site-title'><span className='title-span'>Anim</span>-Aid</h1>
             </div>
             <div className='lower-header'>
-                <button className='header-btn'><Link to="/Pets" className='link-remove'>Pets</Link></button>
+                <button className='header-btn'><Link to="/pets" className='link-remove'>Pets</Link></button>
                 <button className='header-btn'><Link to="/" className='link-remove'>About</Link></button>
-                <button className='header-btn'>Donate</button>
+                <button className='header-btn'><Link to="/donate" className='link-remove'>Donate</Link></button>
             </div>
         </div>
     );

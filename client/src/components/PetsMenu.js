@@ -1,6 +1,6 @@
 import React from 'react';
 import MenuProp from './PetsProps';
-import {PetsData, leftPets, rightPets}from './PetsData';
+import  {leftPets, rightPets}from './PetsData';
 
 function PetsMain() {
     return (

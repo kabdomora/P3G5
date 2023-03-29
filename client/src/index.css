@@ -302,3 +302,9 @@ h6 {
 .iconcolor:hover {
   color:rgb(255, 255, 255);
 }
+
+.donation-modal {
+  height: 80vh;
+  width: 80vh;
+  background-color: white;
+}

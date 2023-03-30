@@ -23,6 +23,11 @@ type Pet {
   donations: [Donation]
 }
 
+type DonationBar {
+  totalAmount: Int!
+  goalAmount: Int!
+}
+
 type Donation {
   _id: ID!
   amount: Int!

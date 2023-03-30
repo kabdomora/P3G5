@@ -96,5 +96,5 @@ const rightPets = PetsData.slice(midIndex);
 
 
 
-export  {leftPets, rightPets, modalPetsData}
+export  {leftPets, rightPets, modalPetsData, PetsData}
 

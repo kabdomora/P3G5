@@ -2,6 +2,10 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function MenuProp(props) {
+  const handleIconClick = () => {
+    props.onClick(props.petName);
+  };
+
   return (
     <div>
       <div className='pet-names-header'>
@@ -14,7 +18,7 @@ function MenuProp(props) {
           <div className='project-description'>
             <div className='project-links-parent'>
               {props.icon && (
-                <a className="icon" href={props.link}>
+                <a className="icon" href="#" onClick={handleIconClick}>
                   <FontAwesomeIcon icon={props.icon} className='iconcolor' beatFade />
                 </a>
               )}

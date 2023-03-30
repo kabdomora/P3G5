@@ -1,6 +1,11 @@
 body {
   font-family: 'Rubik', sans-serif;
   background-image: url('./assets/wallpaper.jpg');
+  height: 100%
+}
+
+html {
+  height: 100%
 }
 
 h1,
@@ -115,7 +120,7 @@ h6 {
 
 /* Main */
 .main-parent {
-  height: 100%;
+  height: 75vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -124,19 +129,19 @@ h6 {
 }
 
 .main-article-parent {
-  height: fit-content;
-  min-height: 75vh;
+  height: 100%;
   width: 90%;
   background-color: rgba(254, 254, 254, 0.814);
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .article-title {
   border-bottom: 1px solid;
-  margin-bottom: 5%;
-  margin-top: 2%;
+  margin-bottom: 3%;
+  margin-top: 1%;
 }
 
 .main-article {
@@ -152,26 +157,160 @@ h6 {
 
 /* Pets Menu */
 
+.pet-names-header {
+  height:3%;
+  width:100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.pet-names {
+  height: 5%;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-align: center;
+  margin-bottom: 3%;
+  color: black;
+  height: 100%;
+
+}
+
+.project-parent {
+  width: 40vh;
+  height: 20vh ;
+  margin: 0 auto;
+  overflow: hidden;
+  border-color: rgb(250, 162, 0);
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 0px 0px 20px 5px rgb(196, 196, 196);
+  margin-bottom: 10%;
+}
+
+.project-parent:hover {
+  box-shadow: 0px 0px 80px 5px rgb(196, 196, 196);
+}
+
+.project-overlay {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.project-description {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(250, 162, 0);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-links-parent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding:  5%;
+  padding-bottom: 1%;
+  
+}
+
+.description-format {
+  flex-direction: column;
+  justify-content: left;
+  padding:  5%;
+  padding-top: 0%;
+}
+
+.project-link {
+  padding-top: 5%;
+  font-size: large;
+  color: rgb(175, 1, 1);
+}
+
+.project-overlay:hover .project-description {
+  min-width: 100%;
+  min-height: 100%;
+  background-color: rgb(48, 48, 48);
+  opacity: .8;
+}
+
+
+
+
+
+
 .pets-menu-parent {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  overflow-y: scroll;
+  
 }
+
+/*
 
 .pets-menu-col {
   width: 45%;
-  height: 25%;
+  height: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 3%;
+  max-height: fit-content;
 }
 
 .Pets-Menu-Componet-Parent {
+  height: 35vh;
   display: flex;
   flex-direction: column;
+}
+
+
+
+.menu-img-container {
+  width: 40vh;
+    height: 20vh ;
+    margin: 0 auto;
+    overflow: hidden;
+    border-color: rgb(250, 162, 0);
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0px 0px 20px 5px rgb(196, 196, 196);
+    margin-bottom: 10%;
+}
+
+.menu-img-container:hover {
+  
+  box-shadow: 0px 0px 80px 5px rgb(196, 196, 196);
+  
+}
+
+.menu-img-overlay {
+  
+  width: 100%;
+  height: 100%;
+  position: relative;
+  
+}
+
+.pets-img {
+
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  transition: opacity 0.3s ease-in-out;
 }
 
 
@@ -186,29 +325,11 @@ h6 {
 }
 
 
-.pets-name {
-  height: 20%;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  text-align: center;
 
-}
 
-.menu-img-container {
-  height: 20vh;
-  width: 100%;
-  overflow: hidden;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
-  overflow: hidden;
-  padding-bottom: 3%;
 
-  
-
-  
-}
 
 .pets-img {
   height: 100%;
@@ -233,9 +354,6 @@ h6 {
 
   justify-content: center;
   align-content: center;
-
-  
-
 }
 
 .Pets-Description-Menu {
@@ -252,17 +370,216 @@ h6 {
   width:100%;
   display: flex;
   flex-direction: row;
-
 }
 
 .Pets-Menu-Sub-Parent-Header {
   font-size: medium;
   margin-right: 5%;
-
 }
 
 .Pets-Menu-Sub-Parent-Txt {
   margin-top: 10% ;
+}
+
+*/
+
+/* Donate */
+
+
+.donate-parent {
+
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.donate-btn {
+  width: 25%;
+  height: 15%;
+  border-radius: 90%;
+
+  font-size: xx-large;
+  
+  color:rgb(251, 255, 0);
+  background-image: url('./assets/tigerprint.jpg');
+}
+
+.donate-pic-parent {
+  height: 50%;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+}
+
+.donate-pic-container {
+  background-color: rgb(255, 0, 208);
+  width: 25%;
+  margin: 5%;
+
+  object-fit: cover;
+
+  border: 2px;
+  border-color: black;
+  border-style: solid;
+
+  box-shadow: 5px 2px 15px 3px rgb(81, 81, 81);
+
+
+
+}
+
+.donation-modal {
+  height: 50%;
+  width: 80vh;
+  background-color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center ;
+  align-items: center;
+
+  margin-bottom: 5%;
+
+  border: 2px;
+  border-color: black;
+  border-style: solid;
+
+  box-shadow: 5px 2px 15px 3px rgb(81, 81, 81);
+  
+}
+
+.modal-content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center ;
+  align-items: center;
+
+  
+  background-image: url(./assets/jungle.png);
+  object-fit: cover;
+
+}
+
+
+
+.donation-close-btn {
+  
+  display: flex;
+  align-self: flex-end;
+  font-size: 3vh;
+  margin-right: 3%;
+  margin-bottom: 2%;
+  color: rgb(19, 50, 7);
+}
+
+.donate-modal-form {
+  height: 95%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+}
+
+.modal-header {
+  align-self: center;
+  margin: 1%;
+  margin-bottom: 5%;
+
+  border-radius: 40%;
+  
+  height: 25%;
+  
+  align-self: center;
+  margin: 1%;
+  margin-bottom: 5%;
+  border-radius: 40%;
+  
+  padding: 1%;
+  
+  background-color: rgba(0, 0, 0, 0.481);
+
+  color: rgb(245, 151, 20);
+  text-shadow: 2px 2px 4px rgb(138, 0, 0);
+  
+}
+
+.lower-donate-modal {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px;
+  padding-bottom: 0px;
+  margin-bottom: 6%;
+}
+
+.modal-text {
+  margin-right: 10px;
+}
+
+.dModal-selector-parent {
+  background-color: rgba(0, 0, 0, 0.481);
+  border-radius:45%;
+  padding-left: 2%;
+  color: rgb(245, 151, 20);
+  text-shadow: 2px 2px 4px rgb(138, 0, 0);
+
+}
+
+.donate-submit-btn {
+  height: 20%;
+  width: 30%;
+
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-style: italic;
+  
+
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 40%;
+  background-color: rgb(19, 50, 7);
+  border-color: rgb(245, 151, 20);
+  color: rgb(245, 151, 20);
+  text-shadow: 2px 2px 4px rgb(138, 0, 0);
+  box-shadow: 5px 2px 15px 3px rgb(81, 81, 81);
+
+  font-weight: 200;
+  font-size: xx-large;
+
+  transition: ease-in-out .5s;
+
+}
+
+.donate-submit-btn:hover {
+  height: 20%;
+  width: 30%;
+
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 40%;
+  background-color: rgb(245, 151, 20);
+  border-color:  transparent;
+  color: rgb(57, 112, 57);
+  text-shadow: 2px 2px 4px rgb(255, 255, 255);
+  box-shadow: 5px 5px 25px 10px rgb(0, 0, 0);
+
+  font-weight: 800;
+  font-size: xx-large;
+
+  transform: scale(1.5);
 
 }
 
@@ -302,3 +619,11 @@ h6 {
 .iconcolor:hover {
   color:rgb(255, 255, 255);
 }
+
+.invisa-footer {
+  height: 6%;
+  width: 100%;
+  
+}
+
+

@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import Main from './components/Main';
 import Header from './components/Header'
 import PetsMenu from './components/PetsMenu'
+import Donate from './components/Donate'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -35,7 +36,8 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="/Pets" element={<PetsMenu />} />
+            <Route path="/pets" element={<PetsMenu />} />
+            <Route path="/donate" element={<Donate />} />
             <Route path="*" element={<h1 className='display-2'>Wrong page!</h1>} />
           </Routes>
           <Footer/>

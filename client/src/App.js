@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+
+import Footer from './components/Footer';
+import Main from './components/Main';
+import Header from './components/Header'
+import PetsMenu from './components/PetsMenu'
+import Donate from './components/Donate'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -35,26 +42,21 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <>
-          <Navbar />
-          <Switch>
-            <Route exact path='/'> 
-              <div className='donation-graph'>
-                <div className='graph-bar' style={{ width: `${percentComplete}%` }}>
-                  <span>${donationAmount}</span>
-                </div>
-                <span>${donationGoal}</span>
-              </div>
-              <button onClick={() => handleDonation(10)}>Donate $10</button>
-            </Route> 
-            <Route path='/saved'> 
-              {/* page here */}
-            </Route>
-            <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
-          </Switch>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/pets" element={<PetsMenu />} />
+            <Route path="/donate" element={<Donate />} />
+            <Route path="*" element={<h1 className='display-2'>Wrong page!</h1>} />
+          </Routes>
+          <Footer/>
         </>
       </Router>
-    </ApolloProvider>
+    </ApolloProvider> 
   );
 }
 
 export default App;
+
+
+

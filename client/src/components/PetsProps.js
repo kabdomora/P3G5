@@ -7,7 +7,7 @@ function MenuProp(props) {
       <div className='pet-names-header'>
         <h2 className='pet-names'>{props.petName}</h2>
       </div>
-
+      <a href={props.link}>
       <div className='project-parent'>
         <div className='project-overlay'>
           <img src={props.picture} alt={props.alt} className='project-img' />
@@ -31,8 +31,9 @@ function MenuProp(props) {
         </div>
       </div>
     </div>
-    
+    </a>
     </div>
+    
   );
 }
 

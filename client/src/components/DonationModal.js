@@ -41,6 +41,9 @@ function DonationModal(props) {
       });
       // console.log(`amount: ${donationAmount} message: ${donationMessage} pet: ${petId} user: ${userData._id}`);
       // console.log(data);
+      setSelectedPet('');
+      setDonationAmount(0);
+      setMessage('');
     } catch (err) {
       console.error(err);
     }

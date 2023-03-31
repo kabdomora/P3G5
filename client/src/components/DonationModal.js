@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { ADD_DONATION } from '../utils/mutations';
 import { PetsOptions } from './PetsData';
 import { useMutation } from '@apollo/client';
@@ -26,34 +26,34 @@ function DonationModal(props) {
     console.log(`Donating ${donationAmount} to ${selectedPet}`);
   };
 
-  // useEffect(() => {
-  //   getUserData();
-  //   console.log('effect');
-  // });
+  const getUserData = useCallback(async () => {
+    try {
+      const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-  // const getUserData = async () => {
-  //   try {
-  //     const token = Auth.loggedIn() ? Auth.getToken() : null;
+      if (!token) {
+        return false;
+      }
 
-  //     if (!token) {
-  //       return false;
-  //     }
+       const { data } = Auth.getProfile(token);
+       const user = data;
 
-  //      const { data } = Auth.getProfile(token);
-  //      const user = data;
+       if (!user) {
+         return false;
+       }
 
-  //      if (!user) {
-  //        return false;
-  //      }
+       console.log(user);
+       console.log("user");
 
-  //      console.log(user);
-  //      console.log("user");
+      setUserData(user);
+    } catch (err) {
+      console.error(err);
+    }
+  }, [setUserData]);
 
-  //     setUserData({...userData, user});
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
+  useEffect(() => {
+    getUserData();
+    console.log('effect');
+  }, [donationAmount, getUserData]);
 
   return (
     <div className="donation-modal">

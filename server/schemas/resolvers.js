@@ -6,7 +6,7 @@ const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find({}).populate("donations").populate("pets");
+      return User.find({});
     },
     oneUser: async (parent, { id, username }, context) => {
       const foundUser = await User.findOne({
@@ -26,6 +26,13 @@ const resolvers = {
       // );
       return foundUser;
     },
+    // me: async (parent, args, context) => {
+    //   if (context.user) {
+    //     const user = await User.findOne({ _id: context.user._id });
+    //     return user;
+    //   }
+    //   throw new AuthenticationError("Not logged in");
+    // },
     pets: async () => {
       return Pet.find({}).populate("supplies");
     },
@@ -119,10 +126,10 @@ const resolvers = {
     },
     donate: async (parent, args, context) => {
       if (context.user) {
-        const donation = new Donation({ args });
+        const donation = new Donation(args);
 
         await User.findByIdAndUpdate(context.user._id, {
-          $push: { donations: donation },
+          $push: { donations: donation._id },
         });
 
         return donation;

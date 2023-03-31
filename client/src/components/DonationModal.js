@@ -1,28 +1,48 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { ADD_DONATION } from '../utils/mutations';
+import { QUERY_PET } from '../utils/queries';
 import { PetsOptions } from './PetsData';
-import { useMutation } from '@apollo/client';
+import { useLazyQuery, useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 
 function DonationModal(props) {
   const [selectedPet, setSelectedPet] = useState('');
   const [donationAmount, setDonationAmount] = useState(0);
+  const [petId, setPetId] = useState({});
 
   const [userData, setUserData] = useState({});
   const [addDonation] = useMutation(ADD_DONATION);
 
 
-  const handlePetSelect = (event) => {
+  const handlePetSelect = async (event) => {
     setSelectedPet(event.target.value);
+    console.log(event.target);
+    const index = event.target.selectedIndex;
+    const optionElement = event.target.childNodes[index];
+    const thisPetId = optionElement.getAttribute('name');
+    setPetId(thisPetId);
+    console.log(petId);
   };
 
   const handleAmountSelect = (event) => {
     setDonationAmount(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(`Donating ${donationAmount} to ${selectedPet}`);
+
+    try {
+      await addDonation({
+        variables: {
+          amount: donationAmount,
+          // message: userMessage,
+          pets: selectedPet,
+        },
+      });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const getUserData = useCallback(async () => {
@@ -49,10 +69,17 @@ function DonationModal(props) {
     }
   }, [setUserData]);
 
+
   useEffect(() => {
     getUserData();
     console.log('effect');
+    console.log(selectedPet);
+    console.log(petId);
+    console.log(donationAmount);
+    console.log(userData);
   }, [donationAmount, getUserData]);
+
+
 
   return (
     <div className="donation-modal">
@@ -65,7 +92,7 @@ function DonationModal(props) {
           <div className='lower-donate-modal'>
           <div className='dModal-selector-parent'>
               <label className='modal-text' htmlFor="pets-select">Select a </label>
-              <select id="dModal-selector" value={selectedPet} onChange={handlePetSelect}>
+              <select id="dModal-selector" value={selectedPet} name={selectedPet} onChange={handlePetSelect}>
                   <option value="">Pet</option>
                   {PetsOptions()}
                 </select>

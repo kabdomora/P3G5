@@ -6,7 +6,7 @@ const petSchema = new Schema(
         name: {
             type: String,
             required: true,
-            unique: false,
+            unique: true,
         },
         breed: {
             type: String,

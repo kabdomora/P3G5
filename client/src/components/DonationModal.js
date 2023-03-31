@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { ADD_DONATION } from '../utils/mutations';
-import { QUERY_PET } from '../utils/queries';
 import { PetsOptions } from './PetsData';
-import { useLazyQuery, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 
 function DonationModal(props) {
   const [selectedPet, setSelectedPet] = useState('');
   const [donationAmount, setDonationAmount] = useState(0);
+  const [donationMessage, setMessage] = useState('');
   const [petId, setPetId] = useState({});
 
   const [userData, setUserData] = useState({});
@@ -16,30 +16,31 @@ function DonationModal(props) {
 
   const handlePetSelect = async (event) => {
     setSelectedPet(event.target.value);
-    console.log(event.target);
+    // console.log(event.target);
     const index = event.target.selectedIndex;
     const optionElement = event.target.childNodes[index];
     const thisPetId = optionElement.getAttribute('name');
     setPetId(thisPetId);
-    console.log(petId);
+    // console.log(petId);
   };
 
-  const handleAmountSelect = (event) => {
-    setDonationAmount(event.target.value);
-  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(`Donating ${donationAmount} to ${selectedPet}`);
 
     try {
-      await addDonation({
+      const { data } = await addDonation({
         variables: {
-          amount: donationAmount,
+          amount: parseInt(donationAmount),
           // message: userMessage,
-          pets: selectedPet,
+          message: donationMessage,
+          pet: petId,
+          user: userData._id,
         },
       });
+      console.log(`amount: ${donationAmount} message: ${donationMessage} pet: ${petId} user: ${userData._id}`);
+      // console.log(data);
     } catch (err) {
       console.error(err);
     }
@@ -72,14 +73,23 @@ function DonationModal(props) {
 
   useEffect(() => {
     getUserData();
-    console.log('effect');
-    console.log(selectedPet);
-    console.log(petId);
-    console.log(donationAmount);
-    console.log(userData);
+    // console.log('effect');
+    // console.log(selectedPet);
+    // console.log(petId);
+    // console.log(donationAmount);
+    // console.log(userData._id);
   }, [donationAmount, getUserData]);
 
+  const handleIntChange = (event) => {
+    const { value } = event.target;
+    const number = parseInt(value);
+    setDonationAmount(number);
+  }
 
+  const handleInputChange = (event) => {
+    const { value } = event.target;
+    setMessage(value);
+  }
 
   return (
     <div className="donation-modal">
@@ -98,13 +108,12 @@ function DonationModal(props) {
                 </select>
             </div>
             <div className='dModal-selector-parent'>
-            <label className='modal-text' htmlFor="amount">Choose donation </label>
-            <select id="dModal-selector" value={donationAmount} onChange={handleAmountSelect}>
-              <option value="0">Amount</option>
-              <option value="5">$5</option>
-              <option value="10">$10</option>
-              <option value="20">$20</option>
-            </select>
+            <label className='modal-text' htmlFor="amount">Enter Donation Amount</label>
+            <input type="number" name="donationAmount" value={donationAmount} onChange={handleIntChange}></input>
+            </div>
+            <div className='dModal-selector-parent'>
+            <label className='modal-text' htmlFor="amount">Leave a message</label>
+            <input type="text" name="message" value={donationMessage} onChange={handleInputChange}></input>
             </div>
           </div>
           <button className='donate-submit-btn' type="submit">Submit!</button>

@@ -17,7 +17,7 @@ export const ADD_USER = gql`
 `;
 
 export const LOGIN_USER = gql`
-  mutation Login($username: String!, $email: String!, $password: String!) {
+  mutation Login($username: String, $email: String, $password: String!) {
     login(username: $username, email: $email, password: $password) {
       token
       user {
@@ -30,21 +30,10 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_DONATION = gql`
-  mutation Donate($amount: Int!, $message: String, $pets: [ID]!) {
-    donate(amount: $amount, message: $message, pets: $pets) {
+  mutation Donate($amount: Int!, $message: String, $pet: ID, $user: ID) {
+    donate(amount: $amount, message: $message, pet: $pet, user: $user) {
       _id
       amount
-      message
-      donationDate
-      pets {
-        _id
-        name
-        summary
-        supplies {
-          type
-          cost
-        }
-      }
     }
   }
 `;

@@ -21,9 +21,6 @@ const resolvers = {
       if (!foundUser) {
         throw new AuthenticationError("Cannot find a user with this id!");
       }
-      // return foundUser.donations.sort(
-      //   (a, b) => b.donationDate - a.donationDate
-      // );
       return foundUser;
     },
     pets: async () => {
@@ -47,6 +44,9 @@ const resolvers = {
 
         return user.donations.id(_id);
       }
+    },
+    donations: async () => {
+      return Donation.find({});
     },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
@@ -118,19 +118,12 @@ const resolvers = {
       return { token, user };
     },
     donate: async (parent, args, context) => {
-      if (context.user) {
-        const donation = new Donation({ args });
-
-        await User.findByIdAndUpdate(context.user._id, {
-          $push: { donations: donation },
-        });
+        const donation = await Donation.create(args);
 
         return donation;
-      }
-
-      throw new AuthenticationError("Not logged in");
     },
-  },
+
+    },
 };
 
 module.exports = resolvers;

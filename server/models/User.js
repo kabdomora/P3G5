@@ -30,7 +30,6 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    donations: [Donation.schema],
   },
   {
     toJSON: {

@@ -27,10 +27,10 @@ function DonationModal(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(`Donating ${donationAmount} to ${selectedPet}`);
+    // console.log(`Donating ${donationAmount} to ${selectedPet}`);
 
     try {
-      const { data } = await addDonation({
+      await addDonation({
         variables: {
           amount: parseInt(donationAmount),
           // message: userMessage,
@@ -39,7 +39,7 @@ function DonationModal(props) {
           user: userData._id,
         },
       });
-      console.log(`amount: ${donationAmount} message: ${donationMessage} pet: ${petId} user: ${userData._id}`);
+      // console.log(`amount: ${donationAmount} message: ${donationMessage} pet: ${petId} user: ${userData._id}`);
       // console.log(data);
     } catch (err) {
       console.error(err);

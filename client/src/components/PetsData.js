@@ -57,7 +57,8 @@ function PetsArray() {
             alt: pet.alt,
             pMenuSubHeader: pet.headline,
             pMenuSubTxt: 'Test sub txt',
-            pMenuDescription: pet.summary
+            pMenuDescription: pet.summary,
+            link: '/pets/'.concat(pet.name,pet._id),
         });
       });
     }

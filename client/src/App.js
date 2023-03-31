@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
@@ -29,6 +29,15 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const [donationAmount, setDonationAmount] = useState(0);
+  const [donationGoal, setDonationGoal] = useState(1000);
+
+  const handleDonation = (amount) => {
+    setDonationAmount(donationAmount + amount);
+  };
+
+  const percentComplete = Math.floor((donationAmount / donationGoal) * 100);
+
   return (
     <ApolloProvider client={client}>
       <Router>

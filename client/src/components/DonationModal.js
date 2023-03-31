@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
-import { modalPetsData } from './PetsData';
+import React, { useState, useEffect } from 'react';
+import { ADD_DONATION } from '../utils/mutations';
+import { modalPetsData, PetsOptions } from './PetsData';
+import { useMutation } from '@apollo/client';
+import Auth from '../utils/auth';
 
 function DonationModal(props) {
   const [selectedPet, setSelectedPet] = useState('');
   const [donationAmount, setDonationAmount] = useState(0);
+  // might not need these two above
+
+  const [userData, setUserData] = useState({});
+  const [addDonation] = useMutation(ADD_DONATION);
+
 
   const handlePetSelect = (event) => {
     setSelectedPet(event.target.value);
@@ -18,6 +26,35 @@ function DonationModal(props) {
     console.log(`Donating ${donationAmount} to ${selectedPet}`);
   };
 
+  // useEffect(() => {
+  //   getUserData();
+  //   console.log('effect');
+  // });
+
+  // const getUserData = async () => {
+  //   try {
+  //     const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+  //     if (!token) {
+  //       return false;
+  //     }
+
+  //      const { data } = Auth.getProfile(token);
+  //      const user = data;
+
+  //      if (!user) {
+  //        return false;
+  //      }
+
+  //      console.log(user);
+  //      console.log("user");
+
+  //     setUserData({...userData, user});
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
+
   return (
     <div className="donation-modal">
       <div className="modal-content">
@@ -31,7 +68,8 @@ function DonationModal(props) {
               <label className='modal-text' htmlFor="pets-select">Select a </label>
               <select id="dModal-selector" value={selectedPet} onChange={handlePetSelect}>
                   <option value="">Pet</option>
-                  {modalPetsData()}
+                  {/* {modalPetsData()}                 */}
+                  {PetsOptions()}
                 </select>
             </div>
             <div className='dModal-selector-parent'>

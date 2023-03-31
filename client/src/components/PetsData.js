@@ -1,6 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 /* Pictures Imported as Var here */
 import pet1 from "../assets/Loretta.png"
+import { QUERY_PETS } from '../utils/queries';
+import { useLazyQuery } from '@apollo/client';
+
+
+
+function useGetPets() {
+    const [queryPets, { data, loading, error }] = useLazyQuery(QUERY_PETS);
+  
+    useEffect(() => {
+      queryPets();
+    }, [queryPets]);
+  
+    return { data, loading, error };
+}
+  
+function PetsOptions() {
+    const { data, loading, error } = useGetPets();
+  
+    if (loading) {
+      return <option>Loading...</option>;
+    }
+  
+    if (error) {
+      console.error(error);
+      return <option>Error loading pets</option>;
+    }
+  
+    return data?.pets?.map((pet) => (
+      <option key={pet._id} value={pet.name}>
+        {pet.name}
+      </option>
+    ));
+
+}
+
 
 const PetsData = [
     {
@@ -10,7 +45,7 @@ const PetsData = [
         pMenuDescription: "This is the test description",
         pMenuSubHeader: "Test sub header",
         pMenuSubTxt: "Test sub txt",
-        id: 0
+        id: 142
     },
     {
         petName: "Jonny",
@@ -19,7 +54,7 @@ const PetsData = [
         pMenuDescription: "This is the test description",
         pMenuSubHeader: "Test sub header",
         pMenuSubTxt: "Test sub txt",
-        id: 1
+        id: 123
 
     },
     {
@@ -29,7 +64,7 @@ const PetsData = [
         pMenuDescription: "This is the test description",
         pMenuSubHeader: "Test sub header",
         pMenuSubTxt: "Test sub txt",
-        id: 3
+        id: 345
     },
     {
         petName: "Jonny",
@@ -38,7 +73,7 @@ const PetsData = [
         pMenuDescription: "This is the test description",
         pMenuSubHeader: "Test sub header",
         pMenuSubTxt: "Test sub txt",
-        id: 4
+        id: 456
 
     },
     {
@@ -48,7 +83,7 @@ const PetsData = [
         pMenuDescription: "This is the test description",
         pMenuSubHeader: "Test sub header",
         pMenuSubTxt: "Test sub txt",
-        id: 0
+        id: 543
     },
     {
         petName: "Jonny",
@@ -57,7 +92,7 @@ const PetsData = [
         pMenuDescription: "This is the test description",
         pMenuSubHeader: "Test sub header",
         pMenuSubTxt: "Test sub txt",
-        id: 1
+        id: 1678
 
     },
     {
@@ -67,7 +102,7 @@ const PetsData = [
         pMenuDescription: "This is the test description",
         pMenuSubHeader: "Test sub header",
         pMenuSubTxt: "Test sub txt",
-        id: 3
+        id: 3234
     },
     {
         petName: "Jonny",
@@ -76,10 +111,11 @@ const PetsData = [
         pMenuDescription: "This is the test description",
         pMenuSubHeader: "Test sub header",
         pMenuSubTxt: "Test sub txt",
-        id: 4
+        id: 4567
 
     }
 ]
+
 
 function modalPetsData() {
     return PetsData.map((pet) => (
@@ -96,5 +132,5 @@ const rightPets = PetsData.slice(midIndex);
 
 
 
-export  {leftPets, rightPets, modalPetsData}
+export  {leftPets, rightPets, modalPetsData, PetsOptions }
 

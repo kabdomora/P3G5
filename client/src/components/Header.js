@@ -22,7 +22,7 @@ function Header() {
                 <LoginModal showModal={showModal} setShowModal={setShowModal} />
             </div>
             <div className='central-header'>
-                <h1 className='site-title'><span className='title-span'>Anim</span>-Aid</h1>
+                <h1 className='site-title'><Link to="/" className='link-remove'><span className='title-span'>Anim</span>-Aid</Link></h1>
             </div>
             <div className='lower-header'>
                 <button className='header-btn'><Link to="/pets" className='link-remove'>Pets</Link></button>

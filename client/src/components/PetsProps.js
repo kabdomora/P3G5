@@ -7,7 +7,7 @@ function MenuProp(props) {
   };
 
   return (
-    <div>
+    <div id={props.id}>
       <div className='pet-names-header'>
         <h2 className='pet-names'>{props.petName}</h2>
       </div>

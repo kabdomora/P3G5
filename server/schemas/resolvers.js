@@ -1,127 +1,128 @@
-const { User, Pet, Donation, Supply } = require('../models');
-const { signToken } = require('../utils/auth');
-const { AuthenticationError } = require('apollo-server-express');
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
-
-
+const { User, Pet, Donation, Supply } = require("../models");
+const { signToken } = require("../utils/auth");
+const { AuthenticationError } = require("apollo-server-express");
+const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 
 const resolvers = {
-    Query: {
-        users: async () => {
-            return User.find({}).populate('donations');
-        },       
-        oneUser: async (parent, { id, username }, context) => {
-            const foundUser =  await User.findOne({
-              $or: [{ _id: context.user ? context.user._id : id }, { username: username }],
-            }).populate({
-              path: 'donations.pets',
-              populate: 'supplies'
-            });
-            if (!foundUser) {
-              throw new AuthenticationError('Cannot find a user with this id!');
-            }
-            return foundUser.donations.sort((a, b) => b.donationDate - a.donationDate);
-        },
-        pets: async () => {
-          return Pet.find({}).populate('supplies');
-        },
-        onePet: async (parent, { id, name }, context) => {
-          const foundPet = await Pet.findOne({
-            $or: [{ _id: context.pet ? context.pet._id : id }, { name: name }],
-          }).populate('supplies');
-          if (!foundPet) {
-            throw new AuthenticationError('Cannot find a pet with this id/name');
-          }
-          return foundPet;
-        },
-        donation: async (parent, {_id}, context) => {
-          if (context.user) {
-            const user = await User.findById(context.user._id).populate({
-              path: 'donations.pets',
-              populate: 'supplies'
-            });
-
-            return user.donations.id(_id);
-          }
-        },
-        checkout: async (parent, args, context) => {
-          const url = new URL(context.headers.referer).origin;
-          const donation = new Donation({ pets: args.pets });
-          const line_items = [];
-    
-          const { pets } = await donation.populate('pets');
-    
-          for (let i = 0; i < pets.length; i++) {
-            const pet = await stripe.pets.create({
-              name: pets[i].name,
-              description: pets[i].description,
-              images: [`${url}/images/${pets[i].image}`]
-            });
-    
-            const price = await stripe.prices.create({
-              pet: pet.id,
-              unit_amount: pets[i].price * 100,
-              currency: 'usd',
-            });
-    
-            line_items.push({
-              price: price.id,
-              quantity: 1
-            });
-          }
-    
-          const session = await stripe.checkout.sessions.create({
-            payment_method_types: ['card'],
-            line_items,
-            mode: 'payment',
-            success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${url}/`
-          });
-    
-          return { session: session.id };
-        }
-        // this checkout query can be modified/replaced as needed. 
+  Query: {
+    users: async () => {
+      return User.find({}).populate("donations").populate("pets");
     },
-    Mutation: {
-        addUser: async (parent, args) => {
-            const user = await User.create(args);
-            const token = signToken(user);
+    oneUser: async (parent, { id, username }, context) => {
+      const foundUser = await User.findOne({
+        $or: [
+          { _id: context.user ? context.user._id : id },
+          { username: username },
+        ],
+      }).populate({
+        path: "donations.pets",
+        populate: "supplies",
+      });
+      if (!foundUser) {
+        throw new AuthenticationError("Cannot find a user with this id!");
+      }
+      return foundUser;
+    },
+    pets: async () => {
+      return Pet.find({}).populate("supplies");
+    },
+    onePet: async (parent, { id, name }, context) => {
+      const foundPet = await Pet.findOne({
+        $or: [{ _id: context.pet ? context.pet._id : id }, { name: name }],
+      }).populate("supplies");
+      if (!foundPet) {
+        throw new AuthenticationError("Cannot find a pet with this id/name");
+      }
+      return foundPet;
+    },
+    donation: async (parent, { _id }, context) => {
+      if (context.user) {
+        const user = await User.findById(context.user._id).populate({
+          path: "donations.pets",
+          populate: "supplies",
+        });
 
-            return ({ token, user });
-        },
-        // add one pet at a time
-        addPet: async (parent, args) => {
-          const pet = await Pet.create(args);
+        return user.donations.id(_id);
+      }
+    },
+    donations: async () => {
+      return Donation.find({});
+    },
+    checkout: async (parent, args, context) => {
+      const url = new URL(context.headers.referer).origin;
+      const donation = new Donation({ pets: args.pets });
+      const line_items = [];
 
-          return (pet);
-        },
-        login: async (parent, args) => {
-            const user = await User.findOne({ $or: [{ username: args.username }, { email: args.email }] });
-            if (!user) {
-              throw new AuthenticationError('No user found with this email address');
-            }
+      const { pets } = await donation.populate("pets");
 
-            const correctPw = await user.isCorrectPassword(args.password);
+      for (let i = 0; i < pets.length; i++) {
+        const pet = await stripe.pets.create({
+          name: pets[i].name,
+          description: pets[i].description,
+          images: [`${url}/images/${pets[i].image}`],
+        });
 
-            if (!correctPw) {
-              throw new AuthenticationError('Incorrect credentials');
-            }
+        const price = await stripe.prices.create({
+          pet: pet.id,
+          unit_amount: pets[i].price * 100,
+          currency: "usd",
+        });
 
-            const token = signToken(user);
+        line_items.push({
+          price: price.id,
+          quantity: 1,
+        });
+      }
 
-            return ({ token, user });
-        }, 
-        donate: async (parent, args, context ) => {
-          if (context.user) {
-            const donation = new Donation({ args });
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        line_items,
+        mode: "payment",
+        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${url}/`,
+      });
 
-            await User.findByIdAndUpdate(context.user._id, { $push: { donations: donation }});
+      return { session: session.id };
+    },
+    // this checkout query can be modified/replaced as needed.
+  },
+  Mutation: {
+    addUser: async (parent, args) => {
+      const user = await User.create(args);
+      const token = signToken(user);
 
-            return donation;
-          }
+      return { token, user };
+    },
+    // add one pet at a time
+    addPet: async (parent, args) => {
+      const pet = await Pet.create(args);
 
-          throw new AuthenticationError('Not logged in');
-        }       
+      return pet;
+    },
+    login: async (parent, args) => {
+      const user = await User.findOne({
+        $or: [{ username: args.username }, { email: args.email }],
+      });
+      if (!user) {
+        throw new AuthenticationError("No user found with this email address");
+      }
+
+      const correctPw = await user.isCorrectPassword(args.password);
+
+      if (!correctPw) {
+        throw new AuthenticationError("Incorrect credentials");
+      }
+
+      const token = signToken(user);
+
+      return { token, user };
+    },
+    donate: async (parent, args, context) => {
+        const donation = await Donation.create(args);
+
+        return donation;
+    },
+
     },
 };
 

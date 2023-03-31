@@ -14,12 +14,14 @@ const donationSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  pets: [
-    {
+  pet: {
       type: Schema.Types.ObjectId,
-      ref: "Pet",
-    },
-  ],
+      ref: 'Pet',
+  },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  },
 });
 
 const Donation = model("Donation", donationSchema);

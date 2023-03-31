@@ -29,7 +29,7 @@ function PetsOptions() {
     }
   
     return data?.pets?.map((pet) => (
-      <option key={pet._id} value={pet.name}>
+      <option key={pet._id} value={pet.name} name={pet._id}>
         {pet.name}
       </option>
     ));

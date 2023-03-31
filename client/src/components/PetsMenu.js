@@ -19,7 +19,8 @@ function PetsMain() {
           <div className='pets-menu-col'>
             {leftPets.map((pet, index) => (
               <MenuProp
-                key={index}
+                key={pet.key}
+                id={pet.id}
                 petName={pet.petName}
                 picture={pet.picture}
                 alt={pet.alt}
@@ -34,7 +35,8 @@ function PetsMain() {
           <div className='pets-menu-col'>
             {rightPets.map((pet, index) => (
               <MenuProp
-                key={index}
+                key={pet.key}
+                id={pet.id}
                 petName={pet.petName}
                 picture={pet.picture}
                 alt={pet.alt}

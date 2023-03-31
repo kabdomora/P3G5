@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 /* Pictures Imported as Var here */
 import pet1 from "../assets/Loretta.png"
 import { QUERY_PETS } from '../utils/queries';
@@ -34,6 +34,37 @@ function PetsOptions() {
       </option>
     ));
 
+}
+
+function PetsArray() {
+    const { data, loading, error } = useGetPets();
+    const PetData = [];
+  
+    if (loading || error) {
+      return PetsData;
+    }
+
+    if (data) {
+      data.pets.forEach((pet) => {
+        PetData.push({
+            value: pet.name,
+            key: pet._id,
+            id: pet._id,
+            petName: pet.name,
+            breed: pet.breed,
+            age: pet.age,
+            gender: pet.gender,
+            // picture: pet.image,
+            picture: '/pets/'.concat(pet.name,'.png'),
+            alt: pet.alt,
+            pMenuSubHeader: pet.headline,
+            pMenuSubTxt: 'Test sub txt',
+            pMenuDescription: pet.summary
+        });
+      });
+    }
+
+    return PetData;
 }
 
 
@@ -126,11 +157,13 @@ function modalPetsData() {
 }
   
 
+
+
 const midIndex = Math.ceil(PetsData.length / 2);
 const leftPets = PetsData.slice(0, midIndex);
 const rightPets = PetsData.slice(midIndex);
 
 
 
-export  {leftPets, rightPets, modalPetsData, PetsOptions }
+export  {leftPets, rightPets, modalPetsData, PetsOptions, PetsArray }
 

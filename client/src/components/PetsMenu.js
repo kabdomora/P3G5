@@ -1,9 +1,16 @@
 import React from 'react';
 import MenuProp from './PetsProps';
-import { leftPets, rightPets } from './PetsData';
+import { PetsArray } from './PetsData';
 import { faPaw } from '@fortawesome/free-solid-svg-icons';
 
 function PetsMain() {
+
+  const PetsData = PetsArray();
+  const midIndex = Math.ceil(PetsData.length / 2);
+  const leftPets = PetsData.slice(0, midIndex);
+  const rightPets = PetsData.slice(midIndex);
+
+
   return (
     <div className='main-parent'>
       <div className='main-article-parent'>

@@ -7,7 +7,6 @@ import Auth from '../utils/auth';
 function DonationModal(props) {
   const [selectedPet, setSelectedPet] = useState('');
   const [donationAmount, setDonationAmount] = useState(0);
-  // might not need these two above
 
   const [userData, setUserData] = useState({});
   const [addDonation] = useMutation(ADD_DONATION);

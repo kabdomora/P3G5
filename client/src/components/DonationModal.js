@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ADD_DONATION } from '../utils/mutations';
-import { modalPetsData, PetsOptions } from './PetsData';
+import { PetsOptions } from './PetsData';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 
@@ -68,7 +68,6 @@ function DonationModal(props) {
               <label className='modal-text' htmlFor="pets-select">Select a </label>
               <select id="dModal-selector" value={selectedPet} onChange={handlePetSelect}>
                   <option value="">Pet</option>
-                  {/* {modalPetsData()}                 */}
                   {PetsOptions()}
                 </select>
             </div>

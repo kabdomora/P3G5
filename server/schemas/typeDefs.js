@@ -14,11 +14,15 @@ const typeDefs = gql`
   type Pet {
     _id: ID!
     name: String!
+    breed: String
+    age: Int
+    gender: String
     image: String
+    alt: String
+    headline: String
     summary: String!
     supplies: [Supply]
     supCount: Int
-    donations: [Donation]
   }
 
   type DonationBar {
@@ -64,7 +68,7 @@ const typeDefs = gql`
       firstName: String!
       lastName: String!
     ): Auth
-    addPet(name: String!, image: String, summary: String!): Pet
+    addPet(name: String!, breed: String, age: Int, gender: String, image: String, alt: String, headline: String, summary: String!): Pet
     login(username: String, email: String, password: String!): Auth
     donate(amount: Int!, message: String, pets: [ID]): Donation
   }

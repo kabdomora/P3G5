@@ -39,7 +39,14 @@ export const QUERY_PETS = gql `
   pets {
     _id
     name
+    image
+    alt
+    headline
     summary
+    supplies {
+      type
+      cost
+    }
   }
 }`;
 

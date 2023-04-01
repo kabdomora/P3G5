@@ -1,14 +1,14 @@
 import React from 'react';
 
-import { PetsData } from './PetsData';
+import { PetsArray } from './PetsData';
 import { useParams } from 'react-router-dom';
 
 function PetPage() {
     const { petName } = useParams();
     console.log(petName);
-    const petId = PetsData.find((pet) => pet.petName === petName)?.id;
+    const petId = PetsArray.find((pet) => pet.petName === petName)?.id;
     console.log(petId);
-    const pet = PetsData.find((pet) => pet.id === petId);
+    const pet = PetsArray.find((pet) => pet.id === petId);
 
     return (
         <div className='main-parent'>

@@ -2,9 +2,18 @@ import React from 'react';
 import MenuProp from './PetsProps';
 import { PetsArray } from './PetsData';
 import { faPaw } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
+
+
+
 
 function PetsMain() {
 
+  const navigate = useNavigate();
+
+  const handlePetClick = (petName) => {
+    navigate(`/pet/${petName}`);
+  };
   const PetsData = PetsArray();
   const midIndex = Math.ceil(PetsData.length / 2);
   const leftPets = PetsData.slice(0, midIndex);
@@ -29,6 +38,7 @@ function PetsMain() {
                 pMenuSubTxt={pet.pMenuSubTxt}
                 icon={faPaw}
                 link={pet.link}
+                onClick={() => handlePetClick(pet.petName)}
               />
             ))}
           </div>
@@ -45,6 +55,7 @@ function PetsMain() {
                 pMenuSubTxt={pet.pMenuSubTxt}
                 icon={faPaw}
                 link={pet.link}
+                onClick={() => handlePetClick(pet.petName)}
               />
             ))}
           </div>

@@ -117,24 +117,30 @@ const resolvers = {
 
       return { token, user };
     },
+    // donate: async (parent, args, context) => {
+    //   if (context.user) {
+    //     const donation = new Donation(args);
+
+    //     await User.findByIdAndUpdate(context.user._id, {
+    //       $push: { donations: donation._id },
+    //     });
+
+    //     return donation;
+    //   }
+
+    //   throw new AuthenticationError("Not logged in");
+    // },
     donate: async (parent, args, context) => {
+      const donation = await Donation.create(args);
+
       if (context.user) {
-        const donation = new Donation(args);
-
         await User.findByIdAndUpdate(context.user._id, {
-          $push: { donations: donation._id },
+          $push: { donations: donation._id},
         });
-
-        return donation;
       }
 
-      throw new AuthenticationError("Not logged in");
+      return donation;
     },
-    // donate: async (parent, args, context) => {
-    //   const donation = await Donation.create(args);
-
-    //   return donation;
-    // },
   },
 };
 

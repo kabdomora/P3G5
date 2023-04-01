@@ -14,9 +14,9 @@ function MenuProp(props) {
           <div className='project-description'>
             <div className='project-links-parent'>
               {props.icon && (
-                <a className="icon" href={props.link}>
+                // <a className="icon" href={props.link}>
                   <FontAwesomeIcon icon={props.icon} className='iconcolor' beatFade />
-                </a>
+                // </a>
               )}
 
              

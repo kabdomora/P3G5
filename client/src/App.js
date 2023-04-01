@@ -7,9 +7,9 @@ import { setContext } from '@apollo/client/link/context';
 
 import Footer from './components/Footer';
 import Main from './components/Main';
-import Header from './components/Header'
-import PetsMenu from './components/PetsMenu'
-import Donate from './components/Donate'
+import Header from './components/Header';
+import PetsMenu from './components/PetsMenu';
+import Donate from './components/Donate';
 import PetPage from './components/PetPage';
 import MyProfile from './components/UserProfile';
 

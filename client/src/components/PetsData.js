@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { QUERY_PETS } from '../utils/queries';
+import { QUERY_PETS, QUERY_PET } from '../utils/queries';
 import { useLazyQuery } from '@apollo/client';
 
 
@@ -12,6 +12,23 @@ function useGetPets() {
     }, [queryPets]);
   
     return { data, loading, error };
+}
+
+function useGetPet() {
+  const [queryPet, {data, loading, error}] = useLazyQuery(QUERY_PET);
+
+  useEffect(() => {
+      const name = window.location.href.split('/')[4];
+      queryPet(
+          {
+              variables: {
+                  name: name,
+              },
+          }
+      );
+  }, [queryPet]);
+
+  return {data, loading, error};
 }
   
 function PetsOptions() {
@@ -66,8 +83,25 @@ function PetsArray() {
     return PetData;
 }
 
+function PetObject() {
+  const { data, loading, error } = useGetPet();
+
+  if (loading) {
+      // console.log("loading");
+      return null
+  }
+
+  if (error) {
+      console.error(error);
+      return null
+  }
+  
+  return data;
+  
+}
 
 
 
-export  { PetsOptions, PetsArray }
+
+export  { PetsOptions, PetsArray, PetObject }
 

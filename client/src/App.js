@@ -10,7 +10,7 @@ import Main from './components/Main';
 import Header from './components/Header';
 import PetsMenu from './components/PetsMenu';
 import Donate from './components/Donate';
-import PetPage from './components/PetPage';
+import PetPage from './components/petpage';
 import MyProfile from './components/UserProfile';
 
 const httpLink = createHttpLink({

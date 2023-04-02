@@ -2,9 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function MenuProp(props) {
-  const handleIconClick = () => {
-    props.onClick(props.id);
-  };
+
 
   return (
     <div id={props.id}>

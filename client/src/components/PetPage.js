@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { PetsArray } from './PetsData';
-import { useParams } from 'react-router-dom';
+import { PetObject } from './PetsData';
 
 function PetPage() {
     const { petName } = useParams();

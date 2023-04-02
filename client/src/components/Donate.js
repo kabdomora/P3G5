@@ -4,6 +4,7 @@ import DonationModal from './DonationModal';
 
 function Donate() {
     const [showModal, setShowModal] = useState(false);
+    const [selectedPet, setSelectedPet] = useState('');
   
     const handleDonateClick = () => {
       setShowModal(true);

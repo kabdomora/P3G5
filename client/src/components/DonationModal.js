@@ -15,13 +15,13 @@ function DonationModal(props) {
 
 
   const handlePetSelect = async (event) => {
-    setSelectedPet(event.target.value);
-    // console.log(event.target);
+    const selectedPet = event.target.value;
+    setSelectedPet(selectedPet);
+  
     const index = event.target.selectedIndex;
     const optionElement = event.target.childNodes[index];
     const thisPetId = optionElement.getAttribute('name');
     setPetId(thisPetId);
-    // console.log(petId);
   };
 
 

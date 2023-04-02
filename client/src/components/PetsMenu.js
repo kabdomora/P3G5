@@ -38,7 +38,6 @@ function PetsMain() {
                 pMenuSubTxt={pet.pMenuSubTxt}
                 icon={faPaw}
                 link={pet.link}
-                // onClick={() => handlePetClick(pet.petName)}
               />
             ))}
           </div>
@@ -55,7 +54,6 @@ function PetsMain() {
                 pMenuSubTxt={pet.pMenuSubTxt}
                 icon={faPaw}
                 link={pet.link}
-                onClick={() => handlePetClick(pet.id)}
               />
             ))}
           </div>

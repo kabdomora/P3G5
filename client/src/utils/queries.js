@@ -27,6 +27,14 @@ query OneUser($id: ID, $username: String) {
 export const QUERY_PET = gql `
 query OnePet($id: ID, $name: String) {
   onePet(id: $id, name: $name) {
+    name
+    alt
+    image
+    headline
+    summary
+    breed
+    age
+    gender
     supplies {
       type
       cost
@@ -39,7 +47,14 @@ export const QUERY_PETS = gql `
   pets {
     _id
     name
+    image
+    alt
+    headline
     summary
+    supplies {
+      type
+      cost
+    }
   }
 }`;
 

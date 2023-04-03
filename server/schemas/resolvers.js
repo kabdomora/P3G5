@@ -6,7 +6,7 @@ const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find({}).populate("donations").populate("pets");
+      return User.find({});
     },
     oneUser: async (parent, { id, username }, context) => {
       const foundUser = await User.findOne({
@@ -21,9 +21,6 @@ const resolvers = {
       if (!foundUser) {
         throw new AuthenticationError("Cannot find a user with this id!");
       }
-      // return foundUser.donations.sort(
-      //   (a, b) => b.donationDate - a.donationDate
-      // );
       return foundUser;
     },
     pets: async () => {
@@ -47,6 +44,9 @@ const resolvers = {
 
         return user.donations.id(_id);
       }
+    },
+    donations: async () => {
+      return Donation.find({});
     },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
@@ -117,18 +117,29 @@ const resolvers = {
 
       return { token, user };
     },
+    // donate: async (parent, args, context) => {
+    //   if (context.user) {
+    //     const donation = new Donation(args);
+
+    //     await User.findByIdAndUpdate(context.user._id, {
+    //       $push: { donations: donation._id },
+    //     });
+
+    //     return donation;
+    //   }
+
+    //   throw new AuthenticationError("Not logged in");
+    // },
     donate: async (parent, args, context) => {
+      const donation = await Donation.create(args);
+
       if (context.user) {
-        const donation = new Donation({ args });
-
         await User.findByIdAndUpdate(context.user._id, {
-          $push: { donations: donation },
+          $push: { donations: donation._id},
         });
-
-        return donation;
       }
 
-      throw new AuthenticationError("Not logged in");
+      return donation;
     },
   },
 };

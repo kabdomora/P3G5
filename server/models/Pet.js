@@ -6,9 +6,24 @@ const petSchema = new Schema(
         name: {
             type: String,
             required: true,
-            unique: false,
+            unique: true,
+        },
+        breed: {
+            type: String,
+        },
+        age: {
+            type: Number,
+        },
+        gender: {
+            type: String,
         },
         image: {
+            type: String,
+        },
+        alt: {
+            type: String,
+        },
+        headline: {
             type: String,
         },
         summary: {

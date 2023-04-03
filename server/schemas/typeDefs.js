@@ -5,20 +5,23 @@ const typeDefs = gql`
     _id: ID!
     username: String!
     email: String!
-    donations: [Donation]
-    donationCount: Int
     firstName: String!
     lastName: String!
+    donations: [Donation]
   }
 
   type Pet {
     _id: ID!
     name: String!
+    breed: String
+    age: Int
+    gender: String
     image: String
+    alt: String
+    headline: String
     summary: String!
     supplies: [Supply]
     supCount: Int
-    donations: [Donation]
   }
 
   type DonationBar {
@@ -30,6 +33,8 @@ const typeDefs = gql`
     _id: ID!
     amount: Int!
     message: String
+    pet: Pet
+    user: User
   }
 
   type Supply {
@@ -53,6 +58,7 @@ const typeDefs = gql`
     pets: [Pet]
     onePet(id: ID, name: String): Pet
     donation(_id: ID!): Donation
+    donations: [Donation]
     checkout(pets: [ID]!): Checkout
   }
 
@@ -64,9 +70,9 @@ const typeDefs = gql`
       firstName: String!
       lastName: String!
     ): Auth
-    addPet(name: String!, image: String, summary: String!): Pet
+    addPet(name: String!, breed: String, age: Int, gender: String, image: String, alt: String, headline: String, summary: String!): Pet
     login(username: String, email: String, password: String!): Auth
-    donate(amount: Int!, message: String, pets: [ID]): Donation
+    donate(amount: Int!, message: String, pet: ID, user: ID): Donation
   }
 `;
 

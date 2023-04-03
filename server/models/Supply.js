@@ -8,7 +8,7 @@ const supplySchema = new Schema({
   cost: {
     type: Number,
     required: true,
-    min: 10.0,
+    min: 1.00,
   },
 });
 

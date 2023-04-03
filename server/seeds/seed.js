@@ -22,3 +22,7 @@ db.once("open", async () => {
     throw error;
   }
 });
+
+    console.log('Data seeded! 🐯');
+    process.exit(0);
+});

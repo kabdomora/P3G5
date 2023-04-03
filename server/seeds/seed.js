@@ -8,12 +8,11 @@ const supplySeeds = require("./supplyData.json");
 db.once("open", async () => {
   try {
     await Pet.deleteMany({});
-    await Pet.insertMany(petSeeds);
-
     await Supply.deleteMany({});
-    await Supply.insertMany(supplySeeds);
-
     await User.deleteMany({});
+
+    await Pet.insertMany(petSeeds);
+    await Supply.insertMany(supplySeeds);
     await User.insertMany(userSeeds);
 
     console.log("Data seeded!");
@@ -21,8 +20,4 @@ db.once("open", async () => {
   } catch (error) {
     throw error;
   }
-});
-
-    console.log('Data seeded! 🐯');
-    process.exit(0);
 });

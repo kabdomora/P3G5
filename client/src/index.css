@@ -26,7 +26,6 @@ h6 {
 .main-header-parent {
   width: 100%;
   height: 20vh;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -96,7 +95,6 @@ h6 {
   min-width: fit-content;
   border-color: transparent;
   background-color: white;
-  
   transition: ease-in-out 3s;
 }
 
@@ -108,8 +106,6 @@ h6 {
   box-shadow: 7px 7px 10px 5px rgb(81, 81, 81);
   transform: scale(2);
 }
-
-
 
 .link-remove {
   text-decoration: none;
@@ -302,7 +298,6 @@ h6 {
   opacity: .8;
 }
 
-
 .pets-menu-parent {
   width: 100%;
   height: 100%;
@@ -318,7 +313,6 @@ h6 {
 }
 
 /* Pet Page */
-
 .petpage-article-parent {
   width: 100%;
   height: 100%;
@@ -397,9 +391,7 @@ h6 {
   width: 50%;
   height: 15%;
   border-radius: 90%;
-
   font-size: medium;
-  
   color:rgb(251, 255, 0);
   background-image: url('./assets/tigerprint.jpg');
 }
@@ -407,20 +399,15 @@ h6 {
 .donate-pic-parent {
   height: auto;
   width: 90%;
-
   display: flex;
   justify-content: center;
-
 }
 
 .donate-pic-container {
   background-color: rgb(255, 0, 208);
   width: 45%;
   margin: 2%;
-
   object-fit: cover;
-  /* object-fit: contain; */
-
   border: 2px;
   border-color: black;
   border-style: solid;
@@ -453,14 +440,9 @@ h6 {
   flex-direction: column;
   justify-content: center ;
   align-items: center;
-
-  
   background-image: url(./assets/jungle.png);
   object-fit: cover;
-
 }
-
-
 
 .donation-close-btn {
   display: flex;
@@ -508,16 +490,13 @@ h6 {
 }
 
 .dModal-selector-parent {
-  
   display: flex;
   flex-direction: column;
   text-align: center;
- 
 }
 
 .modal-text {
   background-color: rgba(0, 0, 0, 0.481);
-  
   padding-left: 2%;
   color: rgb(245, 151, 20);
   text-shadow: 2px 2px 4px rgb(138, 0, 0);
@@ -530,65 +509,49 @@ h6 {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-
 }
 
 .message {
-  
   height: 50px;
-  
 }
 
 .donate-submit-btn {
   height: 20%;
   width: 30%;
-
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-style: italic;
-  
-
   display: flex;
   align-self: center;
   justify-content: center;
   align-items: center;
-
   border-radius: 40%;
   background-color: rgb(19, 50, 7);
   border-color: rgb(245, 151, 20);
   color: rgb(245, 151, 20);
   text-shadow: 2px 2px 4px rgb(138, 0, 0);
   box-shadow: 5px 2px 15px 3px rgb(81, 81, 81);
-
   font-weight: 200;
   font-size: xx-large;
-
   transition: ease-in-out .5s;
-
   margin-top: 1%;
-
 }
 
 .donate-submit-btn:hover {
   height: 20%;
   width: 30%;
-
   display: flex;
   align-self: center;
   justify-content: center;
   align-items: center;
-
   border-radius: 40%;
   background-color: rgb(245, 151, 20);
   border-color:  transparent;
   color: rgb(57, 112, 57);
   text-shadow: 2px 2px 4px rgb(255, 255, 255);
   box-shadow: 5px 5px 25px 10px rgb(0, 0, 0);
-
   font-weight: 800;
   font-size: xx-large;
-
   transform: scale(.75);
-
 }
 
 /* User Profile */
@@ -598,7 +561,6 @@ h6 {
   width: 80%;
   margin-top: 2%;
   margin-bottom: 2%;
-
   display: flex;
   flex-direction: column;
 }
@@ -610,7 +572,6 @@ h6 {
   display: flex;
   justify-content: center;
   align-items: center;
-
   border-bottom: 3px gray solid;
 }
 
@@ -618,7 +579,6 @@ h6 {
   height: 25%;
   min-width: fit-content;
   width: 45%;
-
   background-color: white;
   border: 2px black solid;
   display: flex;
@@ -636,39 +596,25 @@ h6 {
 .profile-lower {
   height: 70%;
   width: 100%;
-  
-
   display: flex;
   flex-direction: column;
-
   align-items: center;
-
   overflow-y: scroll;
   flex-shrink: 0;
-  
-  
-  
 }
 
 .history-parent {
   height: 40px;
   width: 60%;
-
   border: black 2px solid;
   background-color: white;
-
   justify-self: center;
-
   margin-bottom: 1%;
   flex-shrink: 0;
-
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
   padding: .5%;
-  
 }
 
 @media only screen and (max-width: 600px) {
@@ -705,7 +651,6 @@ h6 {
 }
 
 /* Footer */
-
 .main-footer-parent {
   width: 100%;
   height: 5vh;
@@ -716,19 +661,16 @@ h6 {
 .footer-content-box {
   width:90%;
   height:100%;
-
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-
   background-color: black;
   opacity: .65;
 }
 
 .icon {
   font-size: xx-large;
- 
 }
 
 .iconcolor {
@@ -742,7 +684,6 @@ h6 {
 .invisa-footer {
   height: 6%;
   width: 100%;
-  
 }
 
 @media (max-width: 768px) {

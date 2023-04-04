@@ -63,6 +63,12 @@
         - See this pet page
         - Donations
         <!-- - Adopt  -->
+        
+  ## Usage 
+  Mockup Image of our site: 
+  ![Screenshot (2)](https://user-images.githubusercontent.com/112605303/229679990-5770df76-33ee-4621-9672-c8cc758f9f45.png)
+
+
 
   ## Installation Instructions
   * This application should be used via web interface, no installation required.

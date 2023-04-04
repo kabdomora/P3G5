@@ -239,8 +239,8 @@ h6 {
 }
 
 .project-parent {
-  width: 40vh;
-  height: 35vh ;
+  width: 30vw;
+  height: 30vh;
   margin: 0 auto;
   overflow: hidden;
   border-color: rgb(250, 162, 0);
@@ -248,6 +248,12 @@ h6 {
   border-width: 1px;
   box-shadow: 0px 0px 20px 5px rgb(196, 196, 196);
   margin-bottom: 10%;
+
+  @media screen and (max-width: 768px) {
+    width: 80vw;
+    height: 30vh;
+  }
+ 
 }
 
 .project-parent:hover {
@@ -277,15 +283,23 @@ h6 {
   transition: opacity 0.3s ease-in-out;
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: 768px) {
+    top: 40%;
+  }
 }
 
 .project-links-parent {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding:  5%;
+  padding: 5%;
   padding-bottom: 1%;
-  
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .description-format {
@@ -299,6 +313,10 @@ h6 {
   padding-top: 5%;
   font-size: large;
   color: rgb(175, 1, 1);
+
+  @media screen and (max-width: 768px) {
+    font-size: medium;
+  }
 }
 
 .project-overlay:hover .project-description {
@@ -317,6 +335,10 @@ h6 {
   justify-content: space-around;
   overflow-y: scroll;
   
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 /* Pet Page */
@@ -324,12 +346,16 @@ h6 {
 .petpage-article-parent {
   width: 100%;
   height: 100%;
-
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+ }
 
-  
+ @media (max-width: 768px) {
+  .petpage-article-parent {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .petpage-left {
@@ -340,8 +366,6 @@ h6 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-
 }
 
 .petpage-img-container {
@@ -349,17 +373,12 @@ h6 {
   height: 75%;
   background-color: black;
   border-radius: 50%;
-
   object-fit:cover;
   overflow: hidden;
-
   border: black;
-
   border-width: 5px;
   border-style: solid;
-
   box-shadow: 7px 7px 25px 10px rgb(81, 81, 81);
-
 }
 
 .petpage-img {
@@ -373,7 +392,7 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-
+  /* align-items: center; */
 }
 
 .petpage-section {
@@ -383,6 +402,7 @@ h6 {
   justify-self: center;
   background-color: white;
   box-shadow: 10px 10px 15px 5px rgb(81, 81, 81);
+  /* margin-bottom: 20px; */
 }
 
 /* Donate */
@@ -394,22 +414,23 @@ h6 {
   align-content: center;
   align-items: center;
   flex-direction: column;
+  /* flex-wrap: wrap; */
 }
 
 .donate-btn {
-  width: 25%;
+  width: 50%;
   height: 15%;
   border-radius: 90%;
 
-  font-size: xx-large;
+  font-size: medium;
   
   color:rgb(251, 255, 0);
   background-image: url('./assets/tigerprint.jpg');
 }
 
 .donate-pic-parent {
-  height: 50%;
-  width: 100%;
+  height: auto;
+  width: 90%;
 
   display: flex;
   justify-content: center;
@@ -418,24 +439,20 @@ h6 {
 
 .donate-pic-container {
   background-color: rgb(255, 0, 208);
-  width: 25%;
-  margin: 5%;
+  width: 45%;
+  margin: 2%;
 
   object-fit: cover;
+  /* object-fit: contain; */
 
   border: 2px;
   border-color: black;
   border-style: solid;
-
-  object-fit:contain;
-
-
-
 }
 
 .donation-modal {
-  height: 50%;
-  width: 80vh;
+  height: auto;
+  width: 90%;
   background-color: white;
 
   display: flex;
@@ -450,7 +467,6 @@ h6 {
   border-style: solid;
 
   box-shadow: 5px 2px 15px 3px rgb(81, 81, 81);
-  
 }
 
 .modal-content {
@@ -472,7 +488,7 @@ h6 {
 .donation-close-btn {
   display: flex;
   align-self: flex-end;
-  font-size: 3vh;
+  font-size: small;
   margin-right: 3%;
   color: rgb(19, 50, 7);
 }
@@ -497,6 +513,7 @@ h6 {
   background-color: rgba(0, 0, 0, 0.481);
   color: rgb(245, 151, 20);
   text-shadow: 2px 2px 4px rgb(138, 0, 0);
+  font-size: medium;
 }
 
 .central-donate-modal {
@@ -677,6 +694,39 @@ h6 {
   
 }
 
+@media only screen and (max-width: 600px) {
+  .profile-parent {
+    width: 100%;
+  }
+
+  .profile-upper {
+    flex-direction: column;
+    height: auto;
+    justify-content: flex-start;
+    padding-top: 10%;
+  }
+
+  .profile {
+    flex-direction: column;
+    height: auto;
+    margin-top: 5%;
+    width: 70%;
+  }
+
+  .profile-email {
+    margin-top: 5%;
+  }
+
+  .profile-lower {
+    height: auto;
+    padding-top: 10%;
+  }
+
+  .history-parent {
+    width: 90%;
+  }
+}
+
 
 
 
@@ -722,4 +772,22 @@ h6 {
   
 }
 
+@media (max-width: 768px) {
+  .footer-content-box {
+    flex-direction: column;
+    justify-content: center;
+  }
 
+  .icon {
+    font-size: large;
+    margin-top: 10px;
+  }
+
+  .iconcolor {
+    font-size: xx-large;
+  }
+
+  .iconcolor:hover {
+    font-size: xx-large;
+  }
+}

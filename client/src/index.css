@@ -154,12 +154,14 @@ h6 {
 .main-article-parent {
   min-height: 60vh;
   height: fit-content;
+  max-height: 75vh;
   width: 90%;
   background-color: rgba(254, 254, 254, 0.814);
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  overflow: none;
 }
 
 .article-title {
@@ -397,7 +399,7 @@ h6 {
 }
 
 .donate-pic-parent {
-  height: auto;
+  height: 100%;
   width: 90%;
   display: flex;
   justify-content: center;

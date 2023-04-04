@@ -152,7 +152,6 @@ h6 {
 }
 
 .main-article-parent {
-  min-height: auto;
   height: 75vh;
   width: 90%;
   background-color: rgba(254, 254, 254, 0.814);

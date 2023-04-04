@@ -37,7 +37,7 @@ function Donate() {
   
     const handleCloseModal = () => {
       setShowModal(false);
-      setSelectedPet('');
+  
     };
 
     return (

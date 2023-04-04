@@ -1,6 +1,55 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
+import { QUERY_ME } from "../utils/queries";
+import { useLazyQuery } from '@apollo/client';
+import Auth from '../utils/auth';
 
 
+
+function useGetUser() {
+
+    const [userData, setUserData] = useState({});
+    
+
+    const getUserData = useCallback(async () => {
+        try {
+          const token = Auth.loggedIn() ? Auth.getToken() : null;
+    
+          if (!token) {
+            return false;
+          }
+    
+           const { data } = Auth.getProfile(token);
+           const user = data;
+    
+           if (!user) {
+             return false;
+           }
+    
+           console.log(user);
+           console.log("user");
+    
+          setUserData(user);
+        } catch (err) {
+          console.error(err);
+        }
+      }, [setUserData]);
+
+    // function useGetUser() {
+    //     const [queryUser, {data, loading, error}] = useLazyQuery(QUERY_ME);
+
+    //     useEffect(() => {
+    //         const user = userData.
+    //     })
+
+    // }
+
+    
+
+    useEffect(() => {
+        // getUserData();
+        console.log("on load");
+    });
+}
 
 function MyProfile() {
     const [donations, setDonations] = useState([]);

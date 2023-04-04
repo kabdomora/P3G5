@@ -40,7 +40,8 @@ h6 {
   height: 7vh;
   min-height: fit-content;
   width: 90%;
-  text-align: right;
+  display: flex;
+  justify-content: space-between;
 }
 
 .login-btn {
@@ -56,6 +57,26 @@ h6 {
 .login-btn:hover {
   transform: scale(1.75);
   color:rgb(247, 173, 0);
+}
+
+.profile-btn {
+  border-radius: 45%;
+  width: 5vh;
+  min-width: fit-content;
+  border-color: transparent;
+  background-color: white;
+  
+  transition: ease-in-out 3s;
+
+}
+
+.profile-btn:hover {
+  border-radius: 45%;
+  width: 5%;
+  border-color: transparent;
+  background-color: rgb(250, 134, 1);
+  box-shadow: 7px 7px 10px 5px rgb(81, 81, 81);
+  transform: scale(2);
 }
 
 .central-header {
@@ -106,8 +127,9 @@ h6 {
   background-color: rgb(250, 134, 1);
   box-shadow: 7px 7px 10px 5px rgb(81, 81, 81);
   transform: scale(2);
-  
 }
+
+
 
 .link-remove {
   text-decoration: none;

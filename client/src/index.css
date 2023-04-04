@@ -135,6 +135,7 @@ h6 {
   }
   .profile-btn {
     width: 30px;
+    height: inherit;
   }
 
   .lower-header {
@@ -155,7 +156,8 @@ h6 {
 }
 
 .main-article-parent {
-  height: auto;
+  min-height: auto;
+  height: 75vh;
   width: 90%;
   background-color: rgba(254, 254, 254, 0.814);
   display: flex;
@@ -425,7 +427,8 @@ h6 {
 }
 
 .donation-modal {
-  height: auto;
+  min-height: 50%;
+  height: fit-content;
   width: 90%;
   background-color: white;
 

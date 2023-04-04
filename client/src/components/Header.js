@@ -15,8 +15,8 @@ function Header() {
             <div className='upper-header'>
                 {Auth.loggedIn() ? (
                     <>
-                    <button className='login-btn' onClick={Auth.logout}>Logout</button>
-                    <button className='profile-btn'><Link to="/my-profile" className='link-remove'>My Profile</Link></button>
+                    <button className='upper-h-btn'><Link to="/my-profile" className='link-remove'>My Profile</Link></button>
+                    <button className='upper-h-btn' onClick={Auth.logout}>Logout</button>
                     </>
                 ) : (
                     <button className='login-btn' onClick={handleModalOpen}>Login/Sign Up</button>

@@ -22,6 +22,8 @@ function DonationModal(props) {
     const optionElement = event.target.childNodes[index];
     const thisPetId = optionElement.getAttribute('name');
     setPetId(thisPetId);
+    // console.log(petId);
+    localStorage.setItem("selectedPet", event.target.value);
   };
 
 
@@ -44,6 +46,7 @@ function DonationModal(props) {
       setSelectedPet('');
       setDonationAmount(0);
       setMessage('');
+      localStorage.removeItem("selectedPet");
     } catch (err) {
       console.error(err);
     }
@@ -93,6 +96,8 @@ function DonationModal(props) {
     const { value } = event.target;
     setMessage(value);
   }
+
+  
 
   return (
     <div className="donation-modal">

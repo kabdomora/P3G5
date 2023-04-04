@@ -152,7 +152,8 @@ h6 {
 }
 
 .main-article-parent {
-  height: 75vh;
+  min-height: 60vh;
+  height: fit-content;
   width: 90%;
   background-color: rgba(254, 254, 254, 0.814);
   display: flex;

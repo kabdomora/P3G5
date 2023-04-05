@@ -17,7 +17,6 @@ function Header() {
                     <>
                         <button className='upper-h-btn' onClick={Auth.logout}>Logout</button>
                         <button className='upper-h-btn'><Link to="/my-profile" className='link-remove'>My Profile</Link></button>
-                        
                     </>
                 ) : (
                     

@@ -1,36 +1,31 @@
 import React, {useState, useEffect} from 'react';
 import DonationModal from './DonationModal';
 
-function clickEvent(setPet) {
+function clickEvent(setPetPicture) {
   const modal = document.querySelector('.main-parent');
   modal.addEventListener("click", (event) => {
     const selectedPet = localStorage.getItem("selectedPet");
 
-    setPet(selectedPet);
+    setPetPicture(selectedPet);
   })
 }
 
 function Donate() {
     const [showModal, setShowModal] = useState(false);
+    const [petPicture, setPetPicture] = useState(null);
     
-    const [petPicture, setPet] = useState("");
-
-
 
     useEffect(() => {
       console.log("Pet Changed")
-    },[setPet, petPicture]);
+    },[setPetPicture, petPicture]);
 
     useEffect(() => {
-      clickEvent(setPet);
-    },[setPet])
+      clickEvent(setPetPicture);
+    },[setPetPicture])
 
 
     
 
-    console.log(typeof DonationModal);
-    console.log("test");
-  
     const handleDonateClick = () => {
       setShowModal(true);
     };
@@ -38,6 +33,13 @@ function Donate() {
     const handleCloseModal = () => {
       setShowModal(false);
     };
+
+  
+    const handleSelectPet = (pet) => {
+      setPetPicture(pet);
+      setShowModal(false);
+    };
+  
   
     return (
       <div className="main-parent">
@@ -46,7 +48,9 @@ function Donate() {
             <div className="donate-parent">
             {/* {selectedPet && ( */}
               <div className="donate-pic-parent">
+                {petPicture && ( 
               <img src={`/pets/${petPicture}.png`} alt={`${petPicture}`} className="donate-pic-container" />
+              )}
               </div>
             {/* )} */}
 
@@ -57,7 +61,7 @@ function Donate() {
               </button>
             )}
             
-            {showModal && <DonationModal onClose={handleCloseModal} />}
+            {showModal && <DonationModal onClose={handleCloseModal} onSelectPet={handleSelectPet} />}
           </div>
         </div>
       </div>

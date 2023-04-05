@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import { QUERY_PETS, QUERY_PET } from '../utils/queries';
+import React, { useEffect, useState, useCallback } from 'react';
+import { QUERY_PETS, QUERY_PET, QUERY_ME } from '../utils/queries';
 import { useLazyQuery } from '@apollo/client';
-
+import Auth from '../utils/auth';
 
 
 function useGetPets() {
@@ -100,8 +100,63 @@ function PetObject() {
   
 }
 
+function getUserData() {
+    try {
+      const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+      if (!token) {
+        return false;
+      }
+
+       const { data } = Auth.getProfile(token);
+       const user = data;
+
+       if (!user) {
+         return false;
+       }
+
+      //  console.log(user);
+      //  console.log("user");
+
+      return user;
+
+    } catch (err) {
+      console.error(err);
+    }
+};
 
 
 
-export  { PetsOptions, PetsArray, PetObject }
+function useGetUser() {
+  const [queryUser, {data, loading, error}] = useLazyQuery(QUERY_ME);
+  const user = getUserData();
+
+  useEffect(() => {
+    queryUser(
+      {
+        variables: {
+          id: user._id,
+          username: user.username
+        },
+      }
+    );
+  },[user._id, user.username, queryUser]);
+
+  return {data, loading, error};
+
+}
+
+function UserObject() {
+  const user = useGetUser();
+
+  // console.log("UserObject");
+  // console.log(user);
+
+  return user;
+}
+
+
+
+
+export  { PetsOptions, PetsArray, PetObject, UserObject }
 

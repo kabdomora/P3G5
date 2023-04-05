@@ -14,9 +14,9 @@ const resolvers = {
           { _id: context.user ? context.user._id : id },
           { username: username },
         ],
-      }).populate({
-        path: "donations.pets",
-        populate: "supplies",
+      }).populate("donations").populate({
+        path: "donations",
+        populate: "pet"
       });
       if (!foundUser) {
         throw new AuthenticationError("Cannot find a user with this id!");
@@ -91,7 +91,7 @@ const resolvers = {
       const user = await User.create(args);
       const token = signToken(user);
 
-      return { token, user };
+      return ({ token, user });
     },
     // add one pet at a time
     addPet: async (parent, args) => {

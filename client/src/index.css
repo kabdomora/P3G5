@@ -46,14 +46,11 @@ h6 {
 }
 
 .upper-h-btn {
-  
   border-color: transparent;
   background-color: transparent;
   font-family: Georgia, 'Times New Roman', Times, serif;
   margin-left: 2%;
   margin-right: 2%;
-  
-  
   color: white;
   transition: ease-in-out .75s;
 }

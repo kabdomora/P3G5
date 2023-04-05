@@ -400,7 +400,6 @@ h6 {
 .donate-pic-parent {
   height: 50%;
   width: 100%;
-
   display: flex;
   justify-content: center;
 
@@ -612,6 +611,7 @@ h6 {
 
 .profile {
   height: 25%;
+  min-height: fit-content;
   min-width: fit-content;
   width: 45%;
 
@@ -623,6 +623,10 @@ h6 {
   align-items: center;
   padding-left: 1%;
   padding-right: 1%;
+  overflow: scroll;
+}
+.profile-username {
+  font-size: medium;
 }
 
 .profile-email {

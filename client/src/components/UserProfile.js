@@ -18,7 +18,7 @@ function MyProfile() {
                 <div className='profile-parent'>
                     <div className = "profile-upper">
                         <div className='profile'>
-                            <h4 className='profile-username'>JD.Salinger</h4>
+                            <h4 className='profile-username'>JD.Salinger The BEST damn TV Producer</h4>
                             <p className='profile-email'>test@email.com</p>
                         </div>
         

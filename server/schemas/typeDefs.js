@@ -33,6 +33,7 @@ const typeDefs = gql`
     _id: ID!
     amount: Int!
     message: String
+    donationDate: String
     pet: Pet
     user: User
   }

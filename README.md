@@ -12,6 +12,8 @@
   7. [Contact Me](#contact-me)
 
   ## Project Description
+  * This application is built using React, GraphQL (Node.js Express.js server), MongoDB
+  
   * As a user...
       I want to be able to browse a gallery of currently housed pets
       ... so i can select a pet to view details
@@ -26,49 +28,11 @@
 
       I want to have a personal profile that contains my information and site history
       ... so i can keep track of the pets i've donated toward, and total donations to-date
-        
-      
-      Models:
-        - User
-          - username
-          - email
-          - password
-          <!-- - potentially add fields where users can apply to take home an animal -->
-          - [pets]
-          - [donations]
-        - Pet
-          - name
-          - image
-          - summary/about me
-          - [supplies]
-        - Supply
-          - type
-            - bedding
-            - food
-            - toys
-            - vitamins/medication
-          - price
-        - Donation
-          - amount
-          - message
 
-          <!-- need to determine how to set up goal tracker and if it should be based on pet profiles, organization overall, or both -->
 
-      Pages: 
-        - Homepage
-          - About the organization
-          - Search
-        - User profile
-        - See all pets
-        - See this pet page
-        - Donations
-        <!-- - Adopt  -->
-        
   ## Usage 
   Mockup Image of our site: 
   ![Screenshot (2)](https://user-images.githubusercontent.com/112605303/229679990-5770df76-33ee-4621-9672-c8cc758f9f45.png)
-
-
 
   ## Installation Instructions
   * This application should be used via web interface, no installation required.

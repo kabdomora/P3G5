@@ -16,6 +16,10 @@ const server = new ApolloServer({
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use((req, res, next) => {
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  next();
+});
 
 // if we're in production, serve client/build as static assets
 if (process.env.NODE_ENV === "production") {

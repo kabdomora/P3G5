@@ -32,6 +32,8 @@ function Donate() {
   
     const handleCloseModal = () => {
       setShowModal(false);
+      localStorage.removeItem("selectedPet");
+      setPetPicture(null);
     };
 
   

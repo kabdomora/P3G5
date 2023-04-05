@@ -23,7 +23,7 @@ function MyProfile() {
     const lName = object.data.oneUser.lastName;
     const email = object.data.oneUser.email;
       
-    // console.log(donations);
+    console.log(donations);
 
     
 
@@ -43,7 +43,7 @@ function MyProfile() {
                             <div className='history-parent' key={donation._id}>
                                 <div className='history-pet'>{donation.pet.name}</div>
                                 <div className='history-amount'>${donation.amount}</div>
-                                <div className='history-date'>{new Date(donation.donationDate).toLocaleDateString()}</div>
+                                <div className='history-date'>{new Date(parseInt(donation.donationDate)).toLocaleDateString()}</div>
                             </div>
                         ))}
                     </div>

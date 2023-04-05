@@ -99,7 +99,7 @@ function DonationModal(props) {
 
   return (
     <div className="donation-modal">
-      <div className="modal-content">
+      <div className="dmodal-content">
         <span className="donation-close-btn" onClick={props.onClose}>
           &times;
         </span>

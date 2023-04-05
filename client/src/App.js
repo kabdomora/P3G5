@@ -50,7 +50,7 @@ function App() {
             <Route path="/pets" element={<PetsMenu />} />
             <Route path="/donate" element={<Donate />} />
             <Route path="/pet/:petName" element={<PetPage />} />
-            <Route path="my-profile" element={<MyProfile />} />
+            <Route path="/my-profile" element={<MyProfile />} />
             <Route path="*" element={<h1 className='display-2'>Wrong page!</h1>} />
           </Routes>
           <Footer/>

@@ -40,20 +40,25 @@ h6 {
   height: 7vh;
   min-height: fit-content;
   width: 90%;
-  text-align: right;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.login-btn {
-  padding-right: 1.5%;
+.upper-h-btn {
+  
   border-color: transparent;
   background-color: transparent;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  color:rgb(254, 254, 254);
-  opacity: 1;
+  margin-left: 2%;
+  margin-right: 2%;
+  
+  
+  color: white;
   transition: ease-in-out .75s;
 }
 
-.login-btn:hover {
+.upper-h-btn:hover {
   transform: scale(1.75);
   color:rgb(247, 173, 0);
 }
@@ -87,6 +92,7 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  overflow: hidden;
 }
 
 .header-btn {
@@ -137,24 +143,48 @@ h6 {
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  
 }
 
 .article-title {
   border-bottom: 1px solid;
-  margin-bottom: 3%;
-  margin-top: 1%;
+  margin-bottom: 2%;
+  margin-top: 3%;
+
+  
+
+  
+  
+  
+  
 }
 
 .main-article {
   width: 50%;
   height: 50vh;
+  max-height: max-content;
   background-color: whitesmoke;
   border-style: solid;
   border-color: rgb(232, 140, 20);
   box-shadow: 0px 0px 20px 5px rgb(32, 32, 32);
   padding: 3%;
   text-indent: 2%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  overflow: scroll;
 }
+
+@media only screen and (max-width: 700px) {
+  .main-article {
+    width: 100%;
+    padding: 0px;
+  }
+}
+
 
 /* Pets Menu */
 
@@ -177,8 +207,8 @@ h6 {
 }
 
 .project-parent {
-  width: 40vh;
-  height: 35vh ;
+  width: 30vw;
+  height: 30vh;
   margin: 0 auto;
   overflow: hidden;
   border-color: rgb(250, 162, 0);
@@ -186,6 +216,11 @@ h6 {
   border-width: 1px;
   box-shadow: 0px 0px 20px 5px rgb(196, 196, 196);
   margin-bottom: 10%;
+
+  @media screen and (max-width: 768px) {
+    width: 80vw;
+    height: 30vh;
+  }
 }
 
 .project-parent:hover {
@@ -215,15 +250,23 @@ h6 {
   transition: opacity 0.3s ease-in-out;
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: 768px) {
+    top: 40%;
+  }
 }
 
 .project-links-parent {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding:  5%;
+  padding: 5%;
   padding-bottom: 1%;
-  
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .description-format {
@@ -237,6 +280,10 @@ h6 {
   padding-top: 5%;
   font-size: large;
   color: rgb(175, 1, 1);
+
+  @media screen and (max-width: 768px) {
+    font-size: medium;
+  }
 }
 
 .project-overlay:hover .project-description {
@@ -246,7 +293,6 @@ h6 {
   opacity: .8;
 }
 
-
 .pets-menu-parent {
   width: 100%;
   height: 100%;
@@ -255,123 +301,11 @@ h6 {
   justify-content: space-around;
   overflow-y: scroll;
   
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
-
-/*
-
-.pets-menu-col {
-  width: 45%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  max-height: fit-content;
-}
-
-.Pets-Menu-Componet-Parent {
-  height: 35vh;
-  display: flex;
-  flex-direction: column;
-}
-
-
-
-.menu-img-container {
-  width: 40vh;
-    height: 20vh ;
-    margin: 0 auto;
-    overflow: hidden;
-    border-color: rgb(250, 162, 0);
-    border-style: solid;
-    border-width: 1px;
-    box-shadow: 0px 0px 20px 5px rgb(196, 196, 196);
-    margin-bottom: 10%;
-}
-
-.menu-img-container:hover {
-  
-  box-shadow: 0px 0px 80px 5px rgb(196, 196, 196);
-  
-}
-
-.menu-img-overlay {
-  
-  width: 100%;
-  height: 100%;
-  position: relative;
-  
-}
-
-.pets-img {
-
-  width: 100%;
-  height: 100%;
-  background-size: contain;
-  transition: opacity 0.3s ease-in-out;
-}
-
-
-.Pets-Menu-Componet-Upper {
-  max-height: 50%;
-  width: 100%;
-
-  
-  justify-content: space-around;
-  
-
-}
-
-.pets-img {
-  height: 100%;
-  width: 60%;
-  
-  object-fit: cover;
-
-  border: 2px;
-  border-color: black;
-  border-style: solid;
-
-  box-shadow: 5px 2px 15px 3px rgb(81, 81, 81);
-}
-
-.Pets-Menu-Lower-Parent {
-  width: 100%;
-  min-height: 50%;
-  height: fit-content;
-
-  display: flex;
-  flex-direction: column;
-
-  justify-content: center;
-  align-content: center;
-}
-
-.Pets-Description-Menu {
-  width: 75%;
-  padding-top: 1%;
-  text-align: left;
-  text-indent: 1.5%;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.Pets-Menu-Sub-Parent {
-  padding-top: 2%;
-  width:100%;
-  display: flex;
-  flex-direction: row;
-}
-
-.Pets-Menu-Sub-Parent-Header {
-  font-size: medium;
-  margin-right: 5%;
-}
-
-.Pets-Menu-Sub-Parent-Txt {
-  margin-top: 10% ;
-}
-
-*/
 
 /* Pet Page */
 
@@ -437,6 +371,7 @@ h6 {
   justify-self: center;
   background-color: white;
   box-shadow: 10px 10px 15px 5px rgb(81, 81, 81);
+  overflow-y: scroll;
 }
 
 /* Donate */
@@ -455,9 +390,10 @@ h6 {
   height: 15%;
   border-radius: 90%;
 
-  font-size: xx-large;
+  font-size: large;
   
-  color:rgb(251, 255, 0);
+  color:rgb(245, 241, 16);
+  text-shadow: 2px 2px 4px rgb(138, 0, 0);
   background-image: url('./assets/tigerprint.jpg');
 }
 
@@ -472,6 +408,7 @@ h6 {
 
 .donate-pic-container {
   background-color: rgb(255, 0, 208);
+ 
   width: 25%;
   margin: 5%;
 
@@ -481,15 +418,13 @@ h6 {
   border-color: black;
   border-style: solid;
 
-  object-fit:contain;
-
-
-
+  
 }
 
 .donation-modal {
-  height: 50%;
-  width: 80vh;
+  min-height: 50%;
+  height: fit-content;
+  width: 90%;
   background-color: white;
 
   display: flex;
@@ -507,7 +442,7 @@ h6 {
   
 }
 
-.modal-content {
+.dmodal-content {
   height: 100%;
   width: 100%;
   display: flex;
@@ -551,6 +486,7 @@ h6 {
   background-color: rgba(0, 0, 0, 0.481);
   color: rgb(245, 151, 20);
   text-shadow: 2px 2px 4px rgb(138, 0, 0);
+  font-size: large;
 }
 
 .central-donate-modal {

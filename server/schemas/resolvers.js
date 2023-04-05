@@ -14,9 +14,9 @@ const resolvers = {
           { _id: context.user ? context.user._id : id },
           { username: username },
         ],
-      }).populate({
-        path: "donations.pets",
-        populate: "supplies",
+      }).populate("donations").populate({
+        path: "donations",
+        populate: "pet"
       });
       if (!foundUser) {
         throw new AuthenticationError("Cannot find a user with this id!");

@@ -14,9 +14,14 @@ function Header() {
         <div className='main-header-parent'>
             <div className='upper-header'>
                 {Auth.loggedIn() ? (
-                    <button className='login-btn' onClick={Auth.logout}>Logout</button>
+                    <>
+                        <button className='upper-h-btn' onClick={Auth.logout}>Logout</button>
+                        <button className='upper-h-btn'><Link to="/my-profile" className='link-remove'>My Profile</Link></button>
+                        
+                    </>
                 ) : (
-                    <button className='login-btn' onClick={handleModalOpen}>Login/Sign Up</button>
+                    
+                    <button className='upper-h-btn' onClick={handleModalOpen}>Login/Sign Up</button>
                 )}
 
                 <LoginModal showModal={showModal} setShowModal={setShowModal} />

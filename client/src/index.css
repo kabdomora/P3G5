@@ -464,6 +464,20 @@ h6 {
   font-size: 3vh;
   margin-right: 3%;
   color: rgb(19, 50, 7);
+  background-color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgb(19, 50, 7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.donation-close-btn:hover {
+  background-color: rgb(19, 50, 7);
+  color: white;
 }
 
 .donate-modal-form {
@@ -531,14 +545,15 @@ h6 {
 
 .message {
   
-  height: 50px;
-  
+  height: 25px;
+  width: 400px;
 }
 
 .donate-submit-btn {
-  height: 20%;
+  height: 10%;
   width: 30%;
-
+  position: absolute;
+  bottom: 10%;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-style: italic;
   
@@ -561,6 +576,7 @@ h6 {
   transition: ease-in-out .5s;
 
   margin-top: 1%;
+  margin-bottom: 3%;
 
 }
 

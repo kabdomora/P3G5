@@ -120,6 +120,11 @@ h6 {
   color: black;
 }
 
+.link-remove-head {
+  text-decoration: none;
+  color: white;
+}
+
 .link-remove:hover {
   text-decoration: none;
   color: black;

@@ -3,12 +3,31 @@ import { QUERY_ME } from "../utils/queries";
 import { useLazyQuery } from '@apollo/client';
 import Auth from '../utils/auth';
 
-
-
 function useGetUser() {
+    const [queryUser, {data, loading, error}] = useLazyQuery(QUERY_ME);
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+    const { user } = Auth.getProfile(token);
 
+    useEffect(() => {
+        queryUser(
+            {
+                variables: {
+                    _id: user._id
+                }
+            }
+        );
+    }, [queryUser]);
+
+    console.log(user);
+
+    return {data, loading, error};
+}
+
+
+function MyProfile() {
+    const [donations, setDonations] = useState([]);
     const [userData, setUserData] = useState({});
-    
+    const [queryUser] = useLazyQuery(QUERY_ME);
 
     const getUserData = useCallback(async () => {
         try {
@@ -24,35 +43,27 @@ function useGetUser() {
            if (!user) {
              return false;
            }
-    
-           console.log(user);
-           console.log("user");
-    
-          setUserData(user);
+           
+           const thisUser = await queryUser(
+            {
+                variables: {
+                    id: user._id,
+                    username: user.username
+                }
+            }
+           );
+           console.log(thisUser);
+
         } catch (err) {
           console.error(err);
         }
       }, [setUserData]);
 
-    // function useGetUser() {
-    //     const [queryUser, {data, loading, error}] = useLazyQuery(QUERY_ME);
-
-    //     useEffect(() => {
-    //         const user = userData.
-    //     })
-
-    // }
-
     
 
     useEffect(() => {
-        // getUserData();
-        console.log("on load");
-    });
-}
-
-function MyProfile() {
-    const [donations, setDonations] = useState([]);
+        getUserData();
+    }, [getUserData]);
 
     useEffect(() => {
         fetch('/donations')

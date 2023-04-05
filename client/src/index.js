@@ -3,7 +3,9 @@ import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import App from "./App";
-//import * as serviceWorker from "./serviceWorkerRegistration";
+
+// import * as serviceWorker from "./serviceWorkerRegistration";
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -12,4 +14,6 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-//serviceWorker.register();
+
+// serviceWorker.register();
+

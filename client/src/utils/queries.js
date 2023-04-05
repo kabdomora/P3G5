@@ -5,19 +5,16 @@ query OneUser($id: ID, $username: String) {
   oneUser(id: $id, username: $username) {
     firstName
     lastName
+    username
+    email
     donations {
       _id
-      donationDate
       amount
       message
-      pets {
+      donationDate
+      pet {
         _id
         name
-        summary
-        supplies {
-          type
-          cost
-        }
       }
     }
   }
@@ -61,12 +58,14 @@ export const QUERY_PETS = gql `
 export const QUERY_DONATION = gql `
 query Donation($id: ID!) {
   donation(_id: $id) {
-    pets {
-      name
-      supplies {
-        type
-        cost
-      }
+    amount
+    message
+    donationDate
+    pet {
+      _id
+    }
+    user {
+      _id
     }
   }
 }`;

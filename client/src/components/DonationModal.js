@@ -106,30 +106,31 @@ function DonationModal(props) {
         <form className = "donate-modal-form" onSubmit={handleSubmit}>
           <h2 className='modal-header'>Make a Donation!</h2>
           <div className='central-donate-modal'>
-  <div className='dropdown-container'>
-    <div className='dModal-selector-parent'>
-      <div className='modal-text' htmlFor="pets-select">Select a </div>
-      <select id="dModal-selector" value={selectedPet} name={selectedPet} onChange={handlePetSelect}>
-        <option value="">Pet</option>
-        {PetsOptions()}
-      </select>
-    </div>
-    <div className='dModal-selector-parent'>
-      <div className='modal-text' htmlFor="amount"> Amount</div>
-      <input  className='dModal-selector' type="number" name="donationAmount" value={donationAmount} onChange={handleIntChange}></input>
-    </div>
-  </div>
-  <div className='message-container'>
-    <div className='dModal-selector-parent'>
-      <div className='modal-text' htmlFor="msg">Leave a message</div>
-      <input type="text" className="message" value={donationMessage} onChange={handleInputChange}></input>
-    </div>
-  </div>
-</div>
-          
-          <button className='donate-submit-btn' type="submit">Submit!</button>
+            <div className='dropdown-container'>
+              <div className='dModal-selector-parent'>
+                <div className='modal-text' htmlFor="pets-select">Select a </div>
+                <select id="dModal-selector" value={selectedPet} name={selectedPet} onChange={handlePetSelect}>
+                  <option value="">Pet</option>
+                  {PetsOptions()}
+                </select>
+              </div>
+              <div className='dModal-selector-parent'>
+                <div className='modal-text' htmlFor="amount"> Amount</div>
+                <input  id='dModal-selector' type="number" name="donationAmount" value={donationAmount} onChange={handleIntChange}></input>
+              </div>
+            </div>
+            <div className='message-container'>
+              <div className='dModal-selector-parent'>
+                <div className='modal-text' htmlFor="msg">Leave a message</div>
+                <input type="text" className="message" value={donationMessage} onChange={handleInputChange}></input>
+              </div>
+            </div>
+          </div>          
         </form>
-      </div>
+        <div>
+          <button className='donate-submit-btn' type="submit">Submit!</button>
+        </div>
+      </div>      
     </div>
   );
 }

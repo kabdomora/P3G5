@@ -8,6 +8,9 @@ const resolvers = {
     users: async () => {
       return User.find({});
     },
+    supplies: async () => {
+      return Supply.find({});
+    },
     oneUser: async (parent, { id, username }, context) => {
       const foundUser = await User.findOne({
         $or: [
@@ -117,19 +120,6 @@ const resolvers = {
 
       return { token, user };
     },
-    // donate: async (parent, args, context) => {
-    //   if (context.user) {
-    //     const donation = new Donation(args);
-
-    //     await User.findByIdAndUpdate(context.user._id, {
-    //       $push: { donations: donation._id },
-    //     });
-
-    //     return donation;
-    //   }
-
-    //   throw new AuthenticationError("Not logged in");
-    // },
     donate: async (parent, args, context) => {
       const donation = await Donation.create(args);
 
@@ -140,6 +130,15 @@ const resolvers = {
       }
 
       return donation;
+    },
+    removeSupply: async (parent, { _id }) => {
+      return await Supply.findOneAndDelete({_id: _id});
+    },
+    removeProfile: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOneAndDelete({ _id: context.user._id });
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
   },
 };

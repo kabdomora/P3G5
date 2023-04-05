@@ -486,6 +486,7 @@ h6 {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  padding: 5px;
 }
 
 .modal-header {
@@ -505,6 +506,7 @@ h6 {
 
 .central-donate-modal {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   padding: 15px;
   margin-bottom: 1%;
@@ -525,9 +527,13 @@ h6 {
  
 }
 
+#dModal-selector {
+  display: flex;
+}
+
 .modal-text {
   background-color: rgba(0, 0, 0, 0.481);
-  
+  display: flex;
   padding-left: 2%;
   color: rgb(245, 151, 20);
   text-shadow: 2px 2px 4px rgb(138, 0, 0);
@@ -543,16 +549,16 @@ h6 {
 
 }
 
-.message {
-  
-  height: 25px;
+.message {  
+  display: flex;
+  height: 100px;
   width: 400px;
 }
 
 .donate-submit-btn {
-  height: 10%;
-  width: 30%;
-  position: absolute;
+  height: 100%;
+  width: 100%;
+  position: relative;
   bottom: 10%;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-style: italic;

@@ -4,6 +4,7 @@ import { PetsOptions } from './PetsData';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 
+
 function DonationModal(props) {
   const [selectedPet, setSelectedPet] = useState('');
   const [donationAmount, setDonationAmount] = useState(0);
@@ -12,6 +13,7 @@ function DonationModal(props) {
 
   const [userData, setUserData] = useState({});
   const [addDonation] = useMutation(ADD_DONATION);
+  const [showAlert, setShowAlert] = useState(false);
 
 
   const handlePetSelect = async (event) => {
@@ -45,6 +47,7 @@ function DonationModal(props) {
       setDonationAmount(0);
       setMessage('');
       localStorage.removeItem("selectedPet");
+      setShowAlert(true);
     } catch (err) {
       console.error(err);
     }
@@ -103,37 +106,39 @@ function DonationModal(props) {
         <span className="donation-close-btn" onClick={props.onClose}>
           &times;
         </span>
+        {showAlert && (
+        <div className="alert alert-success" role="alert">
+          Form submitted successfully!
+        </div>
+        )}
         <form className = "donate-modal-form" onSubmit={handleSubmit}>
           <h2 className='modal-header'>Make a Donation!</h2>
           <div className='central-donate-modal'>
-            <div>
-              <div className='dropdown-container'>
-                <div className='dModal-selector-parent'>
-                  <div className='modal-text' htmlFor="pets-select">Select a </div>
-                  <select id="dModal-selector" value={selectedPet} name={selectedPet} onChange={handlePetSelect}>
-                    <option value="">Pet</option>
-                    {PetsOptions()}
-                  </select>
-                </div>
-                <div className='dModal-selector-parent'>
-                  <div className='modal-text' htmlFor="amount"> Amount</div>
-                  <input  id='dModal-selector' type="number" name="donationAmount" value={donationAmount} onChange={handleIntChange}></input>
-                </div>
-              </div>
-              <div className='message-container'>
-                <div className='dModal-selector-parent'>
-                  <div className='modal-text' htmlFor="msg">Leave a message</div>
-                  <input type="text" className="message" value={donationMessage} onChange={handleInputChange}></input>
-                </div>
+          <div className='dModal-selector-parent'>
+              <div className='modal-text' htmlFor="pets-select">Select a </div>
+              <select id="dModal-selector" value={selectedPet} name={selectedPet} onChange={handlePetSelect}>
+                  <option value="">Pet</option>
+                  {PetsOptions()}
+                </select>
+            </div>
+            <div className='dModal-selector-parent'>
+                <div className='modal-text' htmlFor="amount"> Amount</div>
+                <input  className='dModal-selector' type="number" name="donationAmount" value={donationAmount} onChange={handleIntChange}></input>
+            </div>
+            </div>
+ 
+            <div className='lower-donate-modal'>
+
+
+              <div className='dModal-selector-parent'>
+              <div className='modal-text' htmlFor="msg">Leave a message</div>
+              <input type="text" className="message" value={donationMessage} onChange={handleInputChange}></input>
               </div>
             </div>
-            <div>
-              <button className='donate-submit-btn' type="submit">Submit!</button>
-            </div>              
-          </div>                  
+          
+          <button className='donate-submit-btn' type="submit">Submit!</button>
         </form>
-        
-      </div>      
+      </div>
     </div>
   );
 }

@@ -3,7 +3,6 @@ import LoginModal from './LoginModal';
 import Auth from '../utils/auth';
 import { Link } from 'react-router-dom';
 
-
 function Header() {
     const [showModal, setShowModal] = useState(false);
 
@@ -17,8 +16,7 @@ function Header() {
                 {Auth.loggedIn() ? (
                     <>
                         <button className='upper-h-btn' onClick={Auth.logout}>Logout</button>
-                        <button className='upper-h-btn'><Link to="/My-profile" className='upper-h-btn'>Profile</Link></button>
-                        
+                        <button className='upper-h-btn'><Link to="/my-profile" className='link-remove'>My Profile</Link></button>
                     </>
                 ) : (
                     

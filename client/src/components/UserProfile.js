@@ -41,7 +41,7 @@ function MyProfile() {
                     <div className='profile-lower'>
                         {donations.map(donation => (
                             <div className='history-parent' key={donation._id}>
-                                <div className='history-pet'>{donation.pet.name}</div>
+                                <a href={`/pet/${donation.pet.name}`}><div className='history-pet'>{donation.pet.name}</div></a>
                                 <div className='history-amount'>${donation.amount}</div>
                                 <div className='history-date'>{new Date(parseInt(donation.donationDate)).toLocaleDateString()}</div>
                             </div>

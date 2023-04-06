@@ -598,6 +598,27 @@ h6 {
   
 }
 
+@media only screen and (min-width: 1080px) {
+  .donate-pic-container {
+    width: 50%;
+    
+  }
+
+  .message  {
+    height: 30px;
+  }
+
+  .donate-submit-btn{
+    height: 50px;
+    font-size: medium;
+  }
+
+  .dModal-selector{
+    width: 75px
+  }
+  
+}
+
 
 
 

@@ -4,6 +4,7 @@ import { PetsOptions } from './PetsData';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 
+
 function DonationModal(props) {
   const [selectedPet, setSelectedPet] = useState('');
   const [donationAmount, setDonationAmount] = useState(0);
@@ -12,6 +13,7 @@ function DonationModal(props) {
 
   const [userData, setUserData] = useState({});
   const [addDonation] = useMutation(ADD_DONATION);
+  const [showAlert, setShowAlert] = useState(false);
 
 
   const handlePetSelect = async (event) => {
@@ -45,6 +47,7 @@ function DonationModal(props) {
       setDonationAmount(0);
       setMessage('');
       localStorage.removeItem("selectedPet");
+      setShowAlert(true);
     } catch (err) {
       console.error(err);
     }
@@ -103,6 +106,11 @@ function DonationModal(props) {
         <span className="donation-close-btn" onClick={props.onClose}>
           &times;
         </span>
+        {showAlert && (
+        <div className="alert alert-success" role="alert">
+          Form submitted successfully!
+        </div>
+        )}
         <form className = "donate-modal-form" onSubmit={handleSubmit}>
           <h2 className='modal-header'>Make a Donation!</h2>
           <div className='central-donate-modal'>

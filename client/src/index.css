@@ -53,7 +53,15 @@ h6 {
   margin-right: 2%;
   color: white;
   transition: ease-in-out .75s;
+  text-decoration: none;
+  
+  
+  
+ 
+
 }
+
+
 
 .upper-h-btn:hover {
   transform: scale(1.75);
@@ -158,20 +166,51 @@ h6 {
 .main-article {
   width: 50%;
   height: 50vh;
-  max-height: max-content;
+  min-height: max-content;
   background-color: whitesmoke;
   border-style: solid;
   border-color: rgb(232, 140, 20);
   box-shadow: 0px 0px 20px 5px rgb(32, 32, 32);
   padding: 3%;
+  
   text-indent: 2%;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-
+  justify-content: center; 
   overflow: scroll;
+}
+
+
+.main-goals {
+  background-color: #f6f6f6;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1713px;
+}
+
+.goals-title {
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 1em;
+  color: #333;
+}
+
+.goals-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.goal {
+  width: 30%;
+  margin: 1em;
+  padding: 1em;
+  background-color: #fff; 
+  border-radius: 0.5em;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
 }
 
 
@@ -217,10 +256,28 @@ h6 {
   color: #666;
 }
 
-@media only screen and (max-width: 700px) {
+.goal-title {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+  color: #333;
+}
+
+.goal-description {
+  font-size: 1.1em;
+  color: #666;
+}
+
+@media only screen and (max-width: 400px) {
   .main-article {
-    width: 100%;
-    padding: 0px;
+    width: 98%; 
+    padding-top: 69vh;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .main-article {
+    width: 95%;
+    
   }
 }
 
@@ -460,7 +517,6 @@ h6 {
   width: 100%;
   display: flex;
   justify-content: center;
-
 }
 
 .donate-pic-container {
@@ -480,23 +536,18 @@ h6 {
 
 .donation-modal {
   min-height: 50%;
-  height: fit-content;
+  height: 20vh;
   width: 90%;
   background-color: white;
-
   display: flex;
   flex-direction: column;
   justify-content: center ;
   align-items: center;
-
   margin-bottom: 5%;
-
   border: 2px;
   border-color: black;
   border-style: solid;
-
   box-shadow: 5px 2px 15px 3px rgb(81, 81, 81);
-  
 }
 
 .dmodal-content {
@@ -504,16 +555,11 @@ h6 {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center ;
+  justify-content: center;
   align-items: center;
-
-  
   background-image: url(./assets/jungle.png);
-  object-fit: cover;
-
+  background-size: contain;
 }
-
-
 
 .donation-close-btn {
   display: flex;
@@ -661,7 +707,33 @@ h6 {
   transform: scale(0.75);
   bottom: 5%;
 
+  transform: scale(.75); 
+
 }
+
+@media only screen and (max-width: 400px) {
+  .donate-pic-container {
+    width: 60%;
+    
+  }
+
+  .message  {
+    height: 20px;
+  }
+
+  .donate-submit-btn{
+    height: 25px;
+    font-size: medium;
+  }
+
+  .dModal-selector{
+    width: 75px
+  }
+  
+}
+
+
+
 
 /* User Profile */
 

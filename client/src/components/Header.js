@@ -3,6 +3,7 @@ import LoginModal from './LoginModal';
 import Auth from '../utils/auth';
 import { Link } from 'react-router-dom';
 
+
 function Header() {
     const [showModal, setShowModal] = useState(false);
 

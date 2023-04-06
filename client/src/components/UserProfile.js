@@ -22,6 +22,7 @@ function MyProfile() {
     const fName = object.data.oneUser.firstName;
     const lName = object.data.oneUser.lastName;
     const email = object.data.oneUser.email;
+    
       
     console.log(donations);
 
@@ -41,7 +42,7 @@ function MyProfile() {
                     <div className='profile-lower'>
                         {donations.map(donation => (
                             <div className='history-parent' key={donation._id}>
-                                <div className='history-pet'>{donation.pet.name}</div>
+                                <a href={`/pet/${donation.pet.name}`}><div className='history-pet'>{donation.pet.name}</div></a>
                                 <div className='history-amount'>${donation.amount}</div>
                                 <div className='history-date'>{new Date(parseInt(donation.donationDate)).toLocaleDateString()}</div>
                             </div>

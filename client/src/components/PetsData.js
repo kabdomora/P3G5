@@ -19,6 +19,7 @@ function useGetPet() {
 
   useEffect(() => {
       const name = window.location.href.split('/')[4];
+      console.log(name);
       queryPet(
           {
               variables: {

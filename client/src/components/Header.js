@@ -16,7 +16,7 @@ function Header() {
                 {Auth.loggedIn() ? (
                     <>
                         <button className='upper-h-btn' onClick={Auth.logout}>Logout</button>
-                        <button className='upper-h-btn'><Link to="/my-profile" className='link-remove'>My Profile</Link></button>
+                        <button className='upper-h-btn'><Link to="/my-profile" className='link-remove-head'>My Profile</Link></button>
                         
                     </>
                 ) : (

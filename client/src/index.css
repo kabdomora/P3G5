@@ -117,6 +117,11 @@ h6 {
   color: black;
 }
 
+.link-remove-head {
+  text-decoration: none;
+  color: white;
+}
+
 .link-remove:hover {
   text-decoration: none;
   color: black;
@@ -124,7 +129,7 @@ h6 {
 
 /* Main */
 .main-parent {
-  height: 75vh;
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -144,16 +149,10 @@ h6 {
 }
 
 .article-title {
+  font-size: 30px;
   border-bottom: 1px solid;
-  margin-bottom: 2%;
+  margin-bottom: 1%;
   margin-top: 3%;
-
-  
-
-  
-  
-  
-  
 }
 
 .main-article {
@@ -173,6 +172,49 @@ h6 {
   justify-content: center;
 
   overflow: scroll;
+}
+
+
+.main-goals {
+  background-color: #f6f6f6;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1713px;
+}
+
+.goals-title {
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 1em;
+  color: #333;
+}
+
+.goals-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.goal {
+  width: 30%;
+  margin: 1em;
+  padding: 1em;
+  background-color: #fff;
+  border-radius: 0.5em;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+}
+
+.goal-title {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+  color: #333;
+}
+
+.goal-description {
+  font-size: 1.1em;
+  color: #666;
 }
 
 @media only screen and (max-width: 700px) {
@@ -358,17 +400,26 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-
 }
 
 .petpage-section {
   border: solid black 2px;
+  border-radius: 8px;
   width: 95%;
   height: 25%;
   justify-self: center;
-  background-color: white;
-  box-shadow: 10px 10px 15px 5px rgb(81, 81, 81);
+  background: linear-gradient(to bottom right, #ffffff, #f1f1f1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   overflow-y: scroll;
+  transition: all 0.3s ease-in-out;
+  margin-bottom: 5%;
+}
+
+.petpage-section:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  border: solid white 2px;
+  cursor: pointer;
 }
 
 /* Donate */
@@ -386,12 +437,22 @@ h6 {
   width: 25%;
   height: 15%;
   border-radius: 90%;
-
+  padding: 35px;
   font-size: large;
-  
+  font-size: 40px;
+  font-weight: bold;
   color:rgb(245, 241, 16);
   text-shadow: 2px 2px 4px rgb(138, 0, 0);
   background-image: url('./assets/tigerprint.jpg');
+  margin-bottom: 1%;
+}
+
+.donate-btn:hover {
+   background-color: #fff;
+  color: #ff6b6b;
+  box-shadow: 0 0 20px #ff6b6b;
+  transform: scale(1.1);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
 .donate-pic-parent {
@@ -460,6 +521,20 @@ h6 {
   font-size: 3vh;
   margin-right: 3%;
   color: rgb(19, 50, 7);
+  background-color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgb(19, 50, 7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.donation-close-btn:hover {
+  background-color: rgb(19, 50, 7);
+  color: white;
 }
 
 .donate-modal-form {
@@ -467,7 +542,8 @@ h6 {
   width: 100%;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: auto;
+  padding: 5px;
 }
 
 .modal-header {
@@ -487,16 +563,17 @@ h6 {
 
 .central-donate-modal {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
-  padding: 15px;
+  padding-bottom: 15px;
   margin-bottom: 1%;
 }
 
 .modal-text {
   margin-right: 10px;
   width: 100%;
-  border-top-left-radius: 50%;
-  border-top-right-radius: 50%;
+  border-top-left-radius: 15%;
+  border-top-right-radius: 15%;
 }
 
 .dModal-selector-parent {
@@ -507,9 +584,13 @@ h6 {
  
 }
 
+#dModal-selector {
+  display: flex;
+}
+
 .modal-text {
   background-color: rgba(0, 0, 0, 0.481);
-  
+  display: flex;
   padding-left: 2%;
   color: rgb(245, 151, 20);
   text-shadow: 2px 2px 4px rgb(138, 0, 0);
@@ -525,16 +606,17 @@ h6 {
 
 }
 
-.message {
-  
-  height: 50px;
-  
+.message {  
+  display: flex;
+  height: 100px;
+  width: 400px;
 }
 
 .donate-submit-btn {
-  height: 20%;
-  width: 30%;
-
+  height: 30%;
+  width: 100%;
+  position: relative;
+  bottom: 10%;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-style: italic;
   
@@ -556,30 +638,28 @@ h6 {
 
   transition: ease-in-out .5s;
 
-  margin-top: 1%;
+  margin-top: 25%;
+  margin-bottom: 3%;
 
 }
 
 .donate-submit-btn:hover {
-  height: 20%;
-  width: 30%;
-
+ height: 80%;
+  width: 80%;
   display: flex;
   align-self: center;
   justify-content: center;
   align-items: center;
-
   border-radius: 40%;
   background-color: rgb(245, 151, 20);
-  border-color:  transparent;
+  border-color: transparent;
   color: rgb(57, 112, 57);
   text-shadow: 2px 2px 4px rgb(255, 255, 255);
   box-shadow: 5px 5px 25px 10px rgb(0, 0, 0);
-
   font-weight: 800;
   font-size: xx-large;
-
-  transform: scale(.75);
+  transform: scale(0.75);
+  bottom: 5%;
 
 }
 

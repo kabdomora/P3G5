@@ -22,6 +22,7 @@ function MyProfile() {
     const fName = object.data.oneUser.firstName;
     const lName = object.data.oneUser.lastName;
     const email = object.data.oneUser.email;
+    
       
     console.log(donations);
 
